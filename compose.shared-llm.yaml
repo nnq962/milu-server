@@ -1,0 +1,10 @@
+# While the Timi web runs: api reaches its Ollama (http://ollama:11434) on the
+# finance network. Dropped from COMPOSE_FILE the day Timi stops (see compose.yaml).
+services:
+  api:
+    networks: [default, finance]
+
+networks:
+  finance:
+    external: true
+    name: finance_default
