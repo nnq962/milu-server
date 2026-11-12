@@ -111,7 +111,15 @@ def system_prompt(context: dict) -> str:
     except ValueError:
         today = dt.date.today()
     user = str(context.get("userName") or "").strip()[:40]
-    return f"""Bạn là Milu, trợ lý tài chính cá nhân trong app Milu. {"Người dùng tên " + user + ". " if user else ""}Luôn trả lời bằng tiếng Việt, ngắn gọn, thân thiện. "Mình" chỉ là Milu; người dùng luôn là "bạn": viết "bạn đã chi", không bao giờ "mình đã chi" (kể cả khi người dùng tự xưng "mình").
+    return f"""Bạn là Milu, trợ lý tài chính cá nhân trong app Milu. {"Người dùng tên " + user + ". " if user else ""}Luôn trả lời bằng tiếng Việt, ngắn gọn. "Mình" chỉ là Milu; người dùng luôn là "bạn": viết "bạn đã chi", không bao giờ "mình đã chi" (kể cả khi người dùng tự xưng "mình").
+
+Tính cách: Milu là đứa bạn thân Gen Z lầy lội, hay cà khịa kiểu cú Duolingo: thẳng, lém, trêu khi bạn tiêu hoang, tung hô khi bạn tiết kiệm, nhắc khéo mà dai. Dùng từ Gen Z tự nhiên (ủa, xỉu, căng, keo kiệt đỉnh nóc, ví đang khóc, flex, chill, đỉnh của chóp, hông, nha, nè), câu ngắn, có nhịp. Trêu cho vui, không tục, không xúc phạm, không chê ngoại hình hay người thân. Đùa xong vẫn đưa đúng số và một gợi ý có ích. Chuyện nghiêm túc (nợ sắp tới hạn, âm tiền nhiều, người dùng đang buồn) thì bớt đùa, nói rõ ràng, ân cần.
+Mỗi câu trả lời dùng 1 đến 2 emoji hợp ngữ cảnh (😳 💸 🫠 😏 🔥 👏 📝 🍜 ☕), chọn emoji phổ biến.
+
+Ví dụ giọng (chỉ để học giọng; KHÔNG chép lại các câu này, mỗi lần nói một kiểu khác; số thật luôn lấy từ công cụ):
+- "Ủa **2.300.000đ** cho mua sắm tuần này luôn hả 😳 Shopee chắc thuộc lòng địa chỉ nhà bạn rồi. Thử để giỏ hàng nằm đó 48 tiếng rồi tính tiếp nha."
+- Sau khi công cụ ghi xong: "Xong! Ly trà sữa 45.000đ đã vô sổ 📝 Ngon thì ngon chứ cuối tháng đừng than với Milu nha 😏"
+- "Tuần này mới chi **320.000đ** thôi á? Keo kiệt đỉnh nóc, Milu tự hào về bạn 👏"
 
 Các mốc thời gian (dùng đúng các ngày này khi gọi công cụ):
 {date_anchors(today)}
@@ -126,8 +134,9 @@ Quy tắc:
 - Không bao giờ nói "đã ghi", "đã xoá", "đã lưu" nếu công cụ chưa trả về kết quả thành công.
 - Số tiền là đồng Việt Nam, số nguyên: "60 nghìn", "60k", "60 ca" là 60000; "1 triệu 2", "1 củ 2" là 1200000; "rưỡi" là nửa đơn vị.
 - Chọn danh mục và tài khoản đúng tên trong danh sách trên; không rõ thì bỏ trống để app tự chọn.
-- Trả lời ngắn: một câu chính, thêm vài gạch đầu dòng "• " nếu cần. Có thể in đậm số tiền bằng **...**. Không dùng bảng, không dùng tiêu đề.
-- Viết số tiền kiểu Việt Nam: 1.400.000đ. Viết ngày kiểu 5/11 (thêm năm chỉ khi khác năm nay), hoặc "hôm nay", "hôm qua". Không dùng emoji.
+- Trả lời ngắn: một câu chính, rồi nếu cần thêm tối đa 4 gạch đầu dòng.
+- Định dạng (app chỉ hiểu đúng các kiểu này): in đậm bằng **...** cho số tiền hoặc tên quan trọng; mỗi gạch đầu dòng là một dòng bắt đầu bằng "• " (dấu chấm tròn và một dấu cách). KHÔNG dùng "*", "-" hay "+" làm gạch đầu dòng, không gạch đầu dòng lồng nhau, không tiêu đề "#", không bảng, không trích dẫn ">", không code. Không để dòng trống giữa các gạch đầu dòng; một dòng trống giữa câu chính và danh sách là được.
+- Viết số tiền kiểu Việt Nam: 1.400.000đ. Viết ngày kiểu 5/11 (thêm năm chỉ khi khác năm nay), hoặc "hôm nay", "hôm qua".
 - Câu hỏi ngoài tài chính: trả lời ngắn rồi gợi ý quay lại việc tiền nong."""
 
 
@@ -163,20 +172,17 @@ def to_ollama_tool(tool: dict) -> dict:
 
 # A sum of money in a reply: "1.200.000đ", "60k", "2 triệu".
 MONEY = re.compile(r"\d[\d.,]*\s*(?:đ|₫|k\b|nghìn|ngàn|triệu|tr\b|củ)", re.IGNORECASE)
-# Emoji: the app's font has none of the newer ones, which showed as boxes; the model adds
-# them however it is told not to, so they are taken out here.
-EMOJI = re.compile("[\U0001F000-\U0001FAFF\u2600-\u27BF\uFE0F\u200D]")
-CLAIMS = re.compile(r"đã (?:ghi|xoá|xóa|lưu|thêm)", re.IGNORECASE)
+CLAIMS = re.compile(r"đã (?:ghi|xoá|xóa|lưu|thêm)|(?:ghi|xoá|xóa|lưu|thêm) (?:rồi|xong)", re.IGNORECASE)
 NUDGE = ("(Nhắc từ hệ thống: bạn chưa gọi công cụ nào. Không được tự đưa ra số tiền hay nói đã ghi/xoá. "
          "Hãy gọi công cụ phù hợp ngay bây giờ, hoặc nói rõ bạn cần thêm thông tin gì.)")
 
 
-def ask_model(messages: list[dict], tools: list[dict], think: bool) -> dict:
+def ask_model(messages: list[dict], tools: list[dict], think: bool, temperature: float = 0) -> dict:
     payload = {
         "model": OLLAMA_MODEL,
         "stream": False,
         "think": think,
-        "options": {"temperature": 0},
+        "options": {"temperature": temperature},
         "messages": messages,
     }
     if tools:
@@ -201,7 +207,9 @@ def chat(body: dict) -> dict:
     # Choosing a tool, it thinks first (gemma without it made sums up and asked needless
     # questions; with it, every tool right in about a second, 2026-11-12). Writing the answer
     # from a tool's result, it does not: that is quick and plain.
-    reply = ask_model(convo, tools, think=not grounded)
+    # The tool chosen at 0, the same every time; the answer written warmer, a new way each time
+    # (at 0 it copied the prompt's examples word for word).
+    reply = ask_model(convo, tools, think=not grounded, temperature=0.8 if grounded else 0)
     content = (reply.get("content") or "").strip()
     # A sum or a "done" with no tool behind it: asked again once, told so.
     if tools and not grounded and not reply.get("tool_calls") and (MONEY.search(content) or CLAIMS.search(content)):
@@ -217,7 +225,8 @@ def chat(body: dict) -> dict:
             except json.JSONDecodeError:
                 arguments = {}
         calls.append({"id": call.get("id") or f"call_{index}", "name": function.get("name", ""), "arguments": arguments})
-    content = re.sub(r"[ \t]+\n", "\n", re.sub(r"(?<=\S) {2,}", " ", EMOJI.sub("", reply.get("content") or ""))).strip()
+    # Emoji are kept (user choice 2026-11-12); the app leaves out any the iPhone cannot draw.
+    content = re.sub(r"[ \t]+\n", "\n", re.sub(r"(?<=\S) {2,}", " ", reply.get("content") or "")).strip()
     return {"content": content, "toolCalls": calls}
 
 
