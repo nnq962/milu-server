@@ -133,7 +133,9 @@ Quy tắc:
 - Bạn không tự ghi hay xoá được gì: chỉ công cụ làm được. Khi người dùng muốn ghi, thêm hay xoá giao dịch, PHẢI gọi công cụ tương ứng ngay trong lượt này, không hỏi lại để xác nhận (app tự hiện thẻ cho người dùng xem, sửa hoặc huỷ). Chỉ hỏi lại khi thiếu số tiền.
 - Không bao giờ nói "đã ghi", "đã xoá", "đã lưu" nếu công cụ chưa trả về kết quả thành công.
 - Số tiền là đồng Việt Nam, số nguyên: "60 nghìn", "60k", "60 ca" là 60000; "1 triệu 2", "1 củ 2" là 1200000; "rưỡi" là nửa đơn vị.
-- Chọn danh mục và tài khoản đúng tên trong danh sách trên; không rõ thì bỏ trống để app tự chọn.
+- Ghi giao dịch: không rõ chi hay thu thì coi là chi; luôn điền danh mục bằng tên gần nghĩa nhất trong danh sách trên (thưởng → Thưởng, grab → Taxi, xe ôm); tài khoản chỉ điền khi người dùng nói tới.
+- Xoá giao dịch: tìm bằng list_transactions, có ref rồi thì gọi delete_transaction ngay, không hỏi lại (app tự hiện nút xác nhận cho người dùng).
+- Chữ chỉ trỏ như "ví đó", "tài khoản đó", "khoản đó", "cái vừa rồi" là thứ vừa được nhắc trong hội thoại, không phải tên giống chữ đó trong danh sách.
 - Trả lời ngắn: một câu chính, rồi nếu cần thêm tối đa 4 gạch đầu dòng.
 - Định dạng (app chỉ hiểu đúng các kiểu này): in đậm bằng **...** cho số tiền hoặc tên quan trọng; mỗi gạch đầu dòng là một dòng bắt đầu bằng "• " (dấu chấm tròn và một dấu cách). KHÔNG dùng "*", "-" hay "+" làm gạch đầu dòng, không gạch đầu dòng lồng nhau, không tiêu đề "#", không bảng, không trích dẫn ">", không code. Không để dòng trống giữa các gạch đầu dòng; một dòng trống giữa câu chính và danh sách là được.
 - Viết số tiền kiểu Việt Nam: 1.400.000đ. Viết ngày kiểu 5/11 (thêm năm chỉ khi khác năm nay), hoặc "hôm nay", "hôm qua".
@@ -171,7 +173,9 @@ def to_ollama_tool(tool: dict) -> dict:
 
 
 # A sum of money in a reply: "1.200.000đ", "60k", "2 triệu".
-MONEY = re.compile(r"\d[\d.,]*\s*(?:đ|₫|k\b|nghìn|ngàn|triệu|tr\b|củ)", re.IGNORECASE)
+# "đ" alone, not the start of a word: "tháng 9 đi" is no sum.
+MONEY = re.compile(r"\d[\d.,]*\s*(?:đ(?!\w)|₫|k\b|nghìn|ngàn|triệu|tr\b|củ\b)", re.IGNORECASE)
+BULLET = re.compile(r"^[ \t]*(?:[*+\-•]\s+)+", re.MULTILINE)
 CLAIMS = re.compile(r"đã (?:ghi|xoá|xóa|lưu|thêm)|(?:ghi|xoá|xóa|lưu|thêm) (?:rồi|xong)", re.IGNORECASE)
 NUDGE = ("(Nhắc từ hệ thống: bạn chưa gọi công cụ nào. Không được tự đưa ra số tiền hay nói đã ghi/xoá. "
          "Hãy gọi công cụ phù hợp ngay bây giờ, hoặc nói rõ bạn cần thêm thông tin gì.)")
@@ -227,6 +231,9 @@ def chat(body: dict) -> dict:
         calls.append({"id": call.get("id") or f"call_{index}", "name": function.get("name", ""), "arguments": arguments})
     # Emoji are kept (user choice 2026-11-12); the app leaves out any the iPhone cannot draw.
     content = re.sub(r"[ \t]+\n", "\n", re.sub(r"(?<=\S) {2,}", " ", reply.get("content") or "")).strip()
+    # List items in the one way the app shows them ("• "), however the model wrote them
+    # (it kept writing "* " on warm answers, eval 2026-11-12).
+    content = BULLET.sub("• ", content)
     return {"content": content, "toolCalls": calls}
 
 

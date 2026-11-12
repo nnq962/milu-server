@@ -1,0 +1,265 @@
+{
+  "context" : {
+    "accounts" : [
+      "Ví tiền mặt",
+      "Vietcombank",
+      "Techcombank",
+      "MoMo",
+      "Thẻ VPBank Visa"
+    ],
+    "expenseCategories" : [
+      "Ăn uống",
+      "Ăn sáng",
+      "Ăn trưa",
+      "Ăn tối",
+      "Cà phê",
+      "Trà sữa",
+      "Đi chợ",
+      "Di chuyển",
+      "Xăng",
+      "Gửi xe",
+      "Taxi, xe ôm",
+      "Xe buýt",
+      "Sửa xe",
+      "Hoá đơn",
+      "Tiền điện",
+      "Tiền nước",
+      "Internet",
+      "Điện thoại",
+      "Gas",
+      "Nhà cửa",
+      "Thuê nhà",
+      "Sửa chữa",
+      "Đồ gia dụng",
+      "Dọn dẹp",
+      "Mua sắm",
+      "Quần áo",
+      "Giày dép",
+      "Mỹ phẩm",
+      "Đồ điện tử",
+      "Mua online",
+      "Giải trí",
+      "Xem phim",
+      "Du lịch",
+      "Game",
+      "Tiệc tùng",
+      "Sức khoẻ",
+      "Thuốc",
+      "Khám bệnh",
+      "Thể thao",
+      "Bảo hiểm",
+      "Học tập",
+      "Học phí",
+      "Sách",
+      "Khoá học",
+      "Gia đình",
+      "Con cái",
+      "Quà tặng",
+      "Hiếu hỉ",
+      "Thú cưng",
+      "Chi khác",
+      "Khác"
+    ],
+    "incomeCategories" : [
+      "Lương",
+      "Lương chính",
+      "Làm thêm",
+      "Thưởng",
+      "Tiền thưởng",
+      "Được cho, tặng",
+      "Đầu tư",
+      "Lãi tiết kiệm",
+      "Cổ tức",
+      "Thu khác",
+      "Bán đồ",
+      "Hoàn tiền",
+      "Khác"
+    ],
+    "today" : "2026-11-12"
+  },
+  "tools" : [
+    {
+      "description" : "Tính tổng chi tiêu hoặc thu nhập trong một khoảng ngày, kèm số giao dịch và phân theo danh mục, theo tài khoản. Dùng cho mọi câu hỏi \"bao nhiêu\", \"tổng\", \"chi nhiều nhất vào đâu\", so sánh các kỳ (gọi một lần cho mỗi kỳ).",
+      "name" : "summarize_transactions",
+      "parameters" : {
+        "properties" : {
+          "accounts" : {
+            "description" : "Lọc theo tên tài khoản; bỏ trống là tất cả",
+            "items" : {
+              "type" : "string"
+            },
+            "type" : "array"
+          },
+          "categories" : {
+            "description" : "Lọc theo tên danh mục; bỏ trống là tất cả",
+            "items" : {
+              "type" : "string"
+            },
+            "type" : "array"
+          },
+          "from" : {
+            "description" : "Ngày đầu, YYYY-MM-DD",
+            "type" : "string"
+          },
+          "kind" : {
+            "description" : "expense: chi, income: thu",
+            "enum" : [
+              "expense",
+              "income"
+            ],
+            "type" : "string"
+          },
+          "to" : {
+            "description" : "Ngày cuối (tính cả ngày này), YYYY-MM-DD",
+            "type" : "string"
+          }
+        },
+        "required" : [
+          "from",
+          "to",
+          "kind"
+        ],
+        "type" : "object"
+      }
+    },
+    {
+      "description" : "Liệt kê các giao dịch trong một khoảng ngày (mới nhất hoặc lớn nhất trước), lọc theo loại, danh mục, tài khoản hoặc chữ trong ghi chú. Dùng cho \"khoản lớn nhất\", \"đã chi gì\", và để tìm giao dịch trước khi xoá (mỗi giao dịch có ref).",
+      "name" : "list_transactions",
+      "parameters" : {
+        "properties" : {
+          "accounts" : {
+            "items" : {
+              "type" : "string"
+            },
+            "type" : "array"
+          },
+          "categories" : {
+            "items" : {
+              "type" : "string"
+            },
+            "type" : "array"
+          },
+          "from" : {
+            "description" : "Ngày đầu, YYYY-MM-DD",
+            "type" : "string"
+          },
+          "kind" : {
+            "description" : "Bỏ trống là cả hai",
+            "enum" : [
+              "expense",
+              "income"
+            ],
+            "type" : "string"
+          },
+          "limit" : {
+            "description" : "Tối đa 20, mặc định 10",
+            "type" : "integer"
+          },
+          "search" : {
+            "description" : "Chữ có trong ghi chú hoặc tên danh mục, ví dụ: tiền điện",
+            "type" : "string"
+          },
+          "sort" : {
+            "enum" : [
+              "newest",
+              "largest"
+            ],
+            "type" : "string"
+          },
+          "to" : {
+            "description" : "Ngày cuối (tính cả ngày này), YYYY-MM-DD",
+            "type" : "string"
+          }
+        },
+        "required" : [
+          "from",
+          "to"
+        ],
+        "type" : "object"
+      }
+    },
+    {
+      "description" : "Số dư từng tài khoản (tiền mặt, ngân hàng, ví, thẻ tín dụng), tổng tài sản ròng, dư nợ thẻ và tiền đang cho vay.",
+      "name" : "get_accounts",
+      "parameters" : {
+        "properties" : {
+
+        },
+        "type" : "object"
+      }
+    },
+    {
+      "description" : "Các khoản cho vay (người khác nợ mình) và đi vay (mình nợ người khác) còn chưa trả xong, kèm hạn trả.",
+      "name" : "get_loans",
+      "parameters" : {
+        "properties" : {
+          "direction" : {
+            "description" : "lent: mình cho vay, borrowed: mình đi vay; bỏ trống là cả hai",
+            "enum" : [
+              "lent",
+              "borrowed"
+            ],
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      }
+    },
+    {
+      "description" : "Ghi một giao dịch chi hoặc thu mới vào app. Gọi ngay khi người dùng muốn ghi, thêm một khoản (\"ghi ăn trưa 60k\", \"nhận lương 25 triệu\"); app hiện thẻ để họ xem, sửa hoặc xoá.",
+      "name" : "record_transaction",
+      "parameters" : {
+        "properties" : {
+          "account" : {
+            "description" : "Tên tài khoản; bỏ trống là tài khoản chính",
+            "type" : "string"
+          },
+          "amount" : {
+            "description" : "Số tiền VND, số nguyên dương",
+            "type" : "integer"
+          },
+          "category" : {
+            "description" : "Tên danh mục trong danh sách; bỏ trống để app tự chọn",
+            "type" : "string"
+          },
+          "date" : {
+            "description" : "YYYY-MM-DD; bỏ trống là hôm nay",
+            "type" : "string"
+          },
+          "kind" : {
+            "enum" : [
+              "expense",
+              "income"
+            ],
+            "type" : "string"
+          },
+          "note" : {
+            "description" : "Ghi chú ngắn: đã chi hay nhận gì, ví dụ: Ăn trưa",
+            "type" : "string"
+          }
+        },
+        "required" : [
+          "kind",
+          "amount"
+        ],
+        "type" : "object"
+      }
+    },
+    {
+      "description" : "Đề nghị xoá một giao dịch theo ref (lấy từ list_transactions). Có ref rồi thì gọi ngay, không hỏi lại người dùng: app không xoá liền mà hiện thẻ để họ bấm xác nhận.",
+      "name" : "delete_transaction",
+      "parameters" : {
+        "properties" : {
+          "ref" : {
+            "description" : "ref của giao dịch, từ list_transactions",
+            "type" : "string"
+          }
+        },
+        "required" : [
+          "ref"
+        ],
+        "type" : "object"
+      }
+    }
+  ]
+}

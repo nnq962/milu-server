@@ -1,0 +1,80 @@
+{
+  "_about": "Câu hỏi mẫu cho Milu, hôm nay là 2026-11-12 (thứ Năm). 'expect.tool' là tool phải gọi ở lượt đầu ('none' = không gọi tool, và không được tự đưa ra số tiền). 'args': mỗi khoá là một tham số; giá trị là chuỗi/số phải khớp, hoặc {\"any\": [...]} (khớp một trong), {\"names\": [...]} (danh sách tên, khớp một trong, không phân biệt dấu), {\"absent\": true}. 'answer' (các câu chấm câu trả lời): 'has' phải có, 'not' không được có.",
+  "cases": [
+    {"id": "r01", "group": "đọc", "q": "tháng này mình tiêu bao nhiêu", "expect": {"tool": "summarize_transactions", "args": {"kind": "expense", "from": "2026-11-01", "to": {"any": ["2026-11-30", "2026-11-12"]}}}},
+    {"id": "r02", "group": "đọc", "q": "tuần trước chi ăn uống hết bao nhiêu", "expect": {"tool": "summarize_transactions", "args": {"kind": "expense", "from": "2026-11-02", "to": "2026-11-08", "categories": {"names": ["Ăn uống"]}}}},
+    {"id": "r03", "group": "đọc", "q": "hôm qua mình tiêu những gì", "expect": {"tool": {"any": ["list_transactions", "summarize_transactions"]}, "args": {"from": "2026-11-11", "to": "2026-11-11"}}},
+    {"id": "r04", "group": "đọc", "q": "tháng trước thu nhập được bao nhiêu", "expect": {"tool": "summarize_transactions", "args": {"kind": "income", "from": "2026-10-01", "to": "2026-10-31"}}},
+    {"id": "r05", "group": "đọc", "q": "khoản chi lớn nhất tháng này là gì", "expect": {"tool": "list_transactions", "args": {"from": "2026-11-01", "to": {"any": ["2026-11-30", "2026-11-12"]}, "sort": "largest"}}},
+    {"id": "r06", "group": "đọc", "q": "năm nay mình tiêu bao nhiêu tiền cà phê", "expect": {"tool": "summarize_transactions", "args": {"kind": "expense", "from": "2026-01-01", "to": {"any": ["2026-12-31", "2026-11-12"]}, "categories": {"names": ["Cà phê"]}}}},
+    {"id": "r07", "group": "đọc", "q": "7 ngày qua chi bao nhiêu qua MoMo", "expect": {"tool": "summarize_transactions", "args": {"kind": "expense", "from": "2026-11-06", "to": "2026-11-12", "accounts": {"names": ["MoMo"]}}}},
+    {"id": "r08", "group": "đọc", "q": "số dư các tài khoản của mình", "expect": {"tool": "get_accounts"}},
+    {"id": "r09", "group": "đọc", "q": "tổng tài sản của mình là bao nhiêu", "expect": {"tool": "get_accounts"}},
+    {"id": "r10", "group": "đọc", "q": "ai đang nợ mình tiền", "expect": {"tool": "get_loans", "args": {"direction": {"any": ["lent", null]}}}},
+    {"id": "r11", "group": "đọc", "q": "mình đang nợ ai không", "expect": {"tool": "get_loans", "args": {"direction": {"any": ["borrowed", null]}}}},
+    {"id": "r12", "group": "đọc", "q": "tháng này mình chi nhiều nhất vào khoản nào", "expect": {"tool": {"any": ["summarize_transactions", "list_transactions"]}, "args": {"from": "2026-11-01"}}},
+    {"id": "r13", "group": "đọc", "q": "tiền điện tháng trước hết bao nhiêu", "expect": {"tool": {"any": ["summarize_transactions", "list_transactions"]}, "args": {"from": "2026-10-01", "to": "2026-10-31"}}},
+    {"id": "r14", "group": "đọc", "q": "từ đầu tháng tới giờ tiêu hết bao nhiêu rồi", "expect": {"tool": "summarize_transactions", "args": {"kind": "expense", "from": "2026-11-01", "to": {"any": ["2026-11-12", "2026-11-30"]}}}},
+    {"id": "r15", "group": "đọc", "q": "tháng 9 đi taxi hết bao nhiêu", "expect": {"tool": "summarize_transactions", "args": {"kind": "expense", "from": "2026-09-01", "to": "2026-09-30", "categories": {"names": ["Taxi, xe ôm", "Di chuyển"]}}}},
+    {"id": "r16", "group": "đọc", "q": "tuần này mua sắm online bao nhiêu", "expect": {"tool": "summarize_transactions", "args": {"kind": "expense", "from": "2026-11-09", "to": {"any": ["2026-11-15", "2026-11-12"]}, "categories": {"names": ["Mua online", "Mua sắm"]}}}},
+
+    {"id": "w01", "group": "ghi", "q": "ghi ăn trưa 60k", "expect": {"tool": "record_transaction", "args": {"kind": "expense", "amount": 60000, "category": {"names": ["Ăn trưa", "Ăn uống"]}}}},
+    {"id": "w02", "group": "ghi", "q": "hôm qua đổ xăng 80 nghìn", "expect": {"tool": "record_transaction", "args": {"kind": "expense", "amount": 80000, "date": "2026-11-11", "category": {"names": ["Xăng", "Di chuyển"]}}}},
+    {"id": "w03", "group": "ghi", "q": "nhận lương 25 triệu", "expect": {"tool": "record_transaction", "args": {"kind": "income", "amount": 25000000, "category": {"names": ["Lương", "Lương chính"]}}}},
+    {"id": "w04", "group": "ghi", "q": "cà phê 45k trả bằng momo", "expect": {"tool": "record_transaction", "args": {"kind": "expense", "amount": 45000, "account": {"names": ["MoMo"]}, "category": {"names": ["Cà phê", "Ăn uống"]}}}},
+    {"id": "w05", "group": "ghi", "q": "mua áo 1 triệu 2 qua techcombank", "expect": {"tool": "record_transaction", "args": {"kind": "expense", "amount": 1200000, "account": {"names": ["Techcombank"]}, "category": {"names": ["Quần áo", "Mua sắm"]}}}},
+    {"id": "w06", "group": "ghi", "q": "trả tiền điện 850k", "expect": {"tool": "record_transaction", "args": {"kind": "expense", "amount": 850000, "category": {"names": ["Tiền điện", "Hoá đơn"]}}}},
+    {"id": "w07", "group": "ghi", "q": "được thưởng 2 củ", "expect": {"tool": "record_transaction", "args": {"kind": "income", "amount": 2000000, "category": {"names": ["Thưởng", "Tiền thưởng"]}}}},
+    {"id": "w08", "group": "ghi", "q": "tiền nhà tháng này 5tr5", "expect": {"tool": "record_transaction", "args": {"kind": "expense", "amount": 5500000, "category": {"names": ["Thuê nhà", "Nhà cửa"]}}}},
+    {"id": "w09", "group": "ghi", "q": "ghi giúp mình 1 ly trà sữa 35 ca", "expect": {"tool": "record_transaction", "args": {"kind": "expense", "amount": 35000, "category": {"names": ["Trà sữa", "Ăn uống"]}}}},
+    {"id": "w10", "group": "ghi", "q": "hôm kia đi grab hết 72 nghìn", "expect": {"tool": "record_transaction", "args": {"kind": "expense", "amount": 72000, "date": "2026-11-10", "category": {"names": ["Taxi, xe ôm", "Di chuyển"]}}}},
+    {"id": "w11", "group": "ghi", "q": "ghi 50k", "expect": {"tool": "record_transaction", "args": {"amount": 50000}}},
+    {"id": "w12", "group": "ghi", "q": "ghi chi tiêu giúp mình", "expect": {"tool": "none"}},
+    {"id": "w13", "group": "ghi", "q": "sáng nay ăn phở 55k với cà phê 30k", "expect": {"tool": "record_transaction", "args": {"amount": {"any": [55000, 30000, 85000]}}}},
+
+    {"id": "d01", "group": "xoá", "q": "xoá khoản cà phê hôm nay", "expect": {"tool": "list_transactions", "args": {"from": "2026-11-12", "to": "2026-11-12"}}},
+    {"id": "d02", "group": "xoá", "q": "xoá khoản cà phê hôm nay", "history": [
+      {"role": "user", "content": "xoá khoản cà phê hôm nay"},
+      {"role": "assistant", "content": "", "toolCalls": [{"id": "c1", "name": "list_transactions", "arguments": {"from": "2026-11-12", "to": "2026-11-12", "search": "cà phê"}}]},
+      {"role": "tool", "toolName": "list_transactions", "content": "{\"count\":1,\"transactions\":[{\"ref\":\"ab12cd34\",\"date\":\"2026-11-12\",\"kind\":\"expense\",\"amount\":45000,\"category\":\"Cà phê\",\"account\":\"MoMo\",\"note\":\"Highlands\"}]}"}
+    ], "continue": true, "expect": {"tool": "delete_transaction", "args": {"ref": "ab12cd34"}}},
+
+    {"id": "n01", "group": "trò chuyện", "q": "chào Milu", "expect": {"tool": "none"}},
+    {"id": "n02", "group": "trò chuyện", "q": "bạn là ai vậy", "expect": {"tool": "none"}},
+    {"id": "n03", "group": "trò chuyện", "q": "thời tiết hôm nay thế nào", "expect": {"tool": "none"}},
+    {"id": "n04", "group": "trò chuyện", "q": "làm sao để tiết kiệm tiền hiệu quả", "expect": {"tool": {"any": ["none", "summarize_transactions"]}}},
+
+    {"id": "f01", "group": "nối tiếp", "q": "còn tháng trước thì sao", "history": [
+      {"role": "user", "content": "tháng này chi ăn uống bao nhiêu"},
+      {"role": "assistant", "content": "Tháng này bạn đã chi **1.460.000đ** cho ăn uống 🍜"}
+    ], "expect": {"tool": "summarize_transactions", "args": {"kind": "expense", "from": "2026-10-01", "to": "2026-10-31", "categories": {"names": ["Ăn uống"]}}}},
+    {"id": "f02", "group": "nối tiếp", "q": "ghi thêm 20k gửi xe bằng ví đó", "history": [
+      {"role": "user", "content": "số dư momo còn bao nhiêu"},
+      {"role": "assistant", "content": "MoMo còn **1.060.000đ** nha 💸"}
+    ], "expect": {"tool": "record_transaction", "args": {"amount": 20000, "account": {"names": ["MoMo"]}, "category": {"names": ["Gửi xe", "Di chuyển"]}}}},
+
+    {"id": "k01", "group": "không dấu", "q": "thang nay tieu bao nhieu", "expect": {"tool": "summarize_transactions", "args": {"kind": "expense", "from": "2026-11-01"}}},
+    {"id": "k02", "group": "không dấu", "q": "ghi an sang 30k", "expect": {"tool": "record_transaction", "args": {"amount": 30000, "category": {"names": ["Ăn sáng", "Ăn uống"]}}}},
+    {"id": "k03", "group": "không dấu", "q": "so du vietcombank", "expect": {"tool": "get_accounts"}},
+    {"id": "k04", "group": "không dấu", "q": "tuan nay chi tieu sao roi", "expect": {"tool": "summarize_transactions", "args": {"kind": "expense", "from": "2026-11-09"}}},
+
+    {"id": "a01", "group": "câu trả lời", "q": "tháng này chi ăn uống bao nhiêu", "toolCall": {"name": "summarize_transactions", "arguments": {"from": "2026-11-01", "to": "2026-11-30", "kind": "expense", "categories": ["Ăn uống"]}},
+     "toolResult": {"from": "2026-11-01", "to": "2026-11-30", "kind": "expense", "total": 1460000, "totalText": "1.460.000 ₫", "count": 7, "byCategory": [{"name": "Ăn uống", "amount": 1460000}], "byAccount": [{"name": "Vietcombank", "amount": 685000}, {"name": "Techcombank", "amount": 520000}]},
+     "answer": {"has": ["1.460.000"], "not": ["mình đã chi", "mình tiêu"]}},
+    {"id": "a02", "group": "câu trả lời", "q": "ghi ăn trưa 60k bằng momo", "toolCall": {"name": "record_transaction", "arguments": {"kind": "expense", "amount": 60000, "category": "Ăn trưa", "account": "MoMo"}},
+     "toolResult": {"ok": true, "recorded": {"ref": "9f8e7d6c", "date": "2026-11-12", "kind": "expense", "amount": 60000, "category": "Ăn trưa", "account": "MoMo", "note": ""}},
+     "answer": {"has": ["60.000"], "not": ["bạn muốn ghi", "xác nhận"]}},
+    {"id": "a03", "group": "câu trả lời", "q": "tổng tài sản của mình", "toolCall": {"name": "get_accounts", "arguments": {}},
+     "toolResult": {"accounts": [{"name": "Vietcombank", "type": "Ngân hàng", "balance": 45800000}, {"name": "MoMo", "type": "Ví điện tử", "balance": 1060000}, {"name": "Thẻ VPBank Visa", "type": "Thẻ tín dụng", "balance": -6430000}], "netWorth": 191630000, "netWorthText": "191.630.000 ₫", "creditDebt": 6430000, "lent": 0},
+     "answer": {"has": ["191.630.000"], "not": []}},
+    {"id": "a04", "group": "câu trả lời", "q": "tháng 9 đi taxi hết bao nhiêu", "toolCall": {"name": "summarize_transactions", "arguments": {"from": "2026-09-01", "to": "2026-09-30", "kind": "expense", "categories": ["Taxi, xe ôm"]}},
+     "toolResult": {"from": "2026-09-01", "to": "2026-09-30", "kind": "expense", "total": 0, "totalText": "0 ₫", "count": 0, "byCategory": [], "byAccount": []},
+     "answer": {"has": [], "not": [], "noMoneyExcept": ["0"]}},
+    {"id": "a05", "group": "câu trả lời", "q": "ai đang nợ mình", "toolCall": {"name": "get_loans", "arguments": {"direction": "lent"}},
+     "toolResult": {"loans": []},
+     "answer": {"has": [], "not": [], "noMoneyExcept": []}},
+    {"id": "a06", "group": "câu trả lời", "q": "tuần trước tiêu bao nhiêu", "toolCall": {"name": "summarize_transactions", "arguments": {"from": "2026-11-02", "to": "2026-11-08", "kind": "expense"}},
+     "toolResult": {"from": "2026-11-02", "to": "2026-11-08", "kind": "expense", "total": 2315000, "totalText": "2.315.000 ₫", "count": 14, "byCategory": [{"name": "Ăn uống", "amount": 780000}, {"name": "Mua sắm", "amount": 980000}, {"name": "Di chuyển", "amount": 555000}], "byAccount": []},
+     "answer": {"has": ["2.315.000"], "not": []}}
+  ]
+}

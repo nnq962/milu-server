@@ -40,3 +40,21 @@ GPU chỉ đủ một bản model. Khi web Timi (project `finance`) còn chạy,
 `compose.shared-llm.yaml`. Ngày tắt Timi, sửa `.env` theo `.env.example` (`COMPOSE_FILE=compose.yaml`,
 `COMPOSE_PROFILES=llm`, `OLLAMA_URL=http://llm:11434`) rồi `docker compose up -d`. Model đã tải nằm
 trong volume `finance-ollama`, `llm` dùng lại.
+
+## Chấm điểm
+
+`eval/cases.json` là bộ câu hỏi mẫu kèm đáp án (tool phải gọi, tham số, và câu trả lời phải có
+gì). `eval/app.json` là danh sách tool và ngữ cảnh đúng như app gửi; xuất lại mỗi khi sửa tool
+trong app:
+
+```sh
+TEST_RUNNER_MILU_EXPORT=$PWD/eval/app.json xcodebuild test ... -only-testing:MiluTests/AssistantToolsTests
+```
+
+Chạy (mỗi câu 3 lượt, kết quả ở `eval/results.md`):
+
+```sh
+MILU_API_KEY=... python3 eval/run.py --runs 3
+```
+
+Nên chạy lại mỗi khi sửa lời dặn trong `api/server.py`, đổi model, hoặc thêm tool.
