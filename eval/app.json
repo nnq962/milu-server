@@ -301,7 +301,7 @@
       }
     },
     {
-      "description" : "Số dư từng tài khoản (tiền mặt, ngân hàng, ví, thẻ tín dụng), tổng tài sản ròng, dư nợ thẻ và tiền đang cho vay.",
+      "description" : "Số dư từng tài khoản (tiền mặt, ngân hàng, ví, thẻ tín dụng), tổng tiền đang có, tiền trong các hũ, tổng tài sản ròng, dư nợ thẻ, tiền cho vay và đi vay còn lại.",
       "name" : "get_accounts",
       "parameters" : {
         "properties" : {
@@ -311,7 +311,7 @@
       }
     },
     {
-      "description" : "Các khoản cho vay (người khác nợ mình) và đi vay (mình nợ người khác) còn chưa trả xong, kèm hạn trả.",
+      "description" : "Các khoản cho vay (người khác nợ mình) và đi vay (mình nợ người khác): còn lại bao nhiêu, đã trả bao nhiêu, vay từ ngày nào, hạn trả, lãi mỗi tháng, của ai. Mặc định chỉ các khoản chưa trả xong.",
       "name" : "get_loans",
       "parameters" : {
         "properties" : {
@@ -322,8 +322,118 @@
               "borrowed"
             ],
             "type" : "string"
+          },
+          "include_settled" : {
+            "description" : "true để kể cả các khoản đã trả xong",
+            "type" : "boolean"
           }
         },
+        "type" : "object"
+      }
+    },
+    {
+      "description" : "Hạn mức chi tiêu: hạn mức cả tháng và từng nhóm hạng mục, đã chi bao nhiêu, còn tiêu được bao nhiêu, mỗi ngày còn được tiêu bao nhiêu đến hết tháng, nhóm nào sắp chạm hay đã vượt. Dùng cho \"còn tiêu được bao nhiêu\", \"có vượt hạn mức không\", \"hạn mức ăn uống còn bao nhiêu\". Trung bình mỗi ngày đã tiêu thì dùng summarize_transactions.",
+      "name" : "get_budget",
+      "parameters" : {
+        "properties" : {
+          "month" : {
+            "description" : "Tháng, YYYY-MM; bỏ trống là tháng này",
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      }
+    },
+    {
+      "description" : "Các hũ tiết kiệm: tên, đã để dành bao nhiêu, mục tiêu, còn thiếu bao nhiêu, đạt bao nhiêu phần trăm, hạn, mỗi tháng cần để thêm bao nhiêu cho kịp hạn, tháng này đã nạp, rút bao nhiêu. Dùng cho câu hỏi về hũ, quỹ, tiết kiệm cho mục tiêu. Nạp, rút hũ của tháng khác thì dùng list_transfers.",
+      "name" : "get_savings_goals",
+      "parameters" : {
+        "properties" : {
+          "include_completed" : {
+            "description" : "true để kể cả các hũ đã hoàn thành, đã đóng",
+            "type" : "boolean"
+          }
+        },
+        "type" : "object"
+      }
+    },
+    {
+      "description" : "Các giao dịch định kỳ người dùng đã đặt (tiền nhà, điện nước, lương, gói đăng ký…): số tiền, lặp lại thế nào, lần tới ngày nào, tài khoản, đang chạy hay tạm dừng, và tổng chi, thu định kỳ quy ra mỗi tháng. Dùng cho \"mỗi tháng phải trả cố định bao nhiêu\", \"có những khoản định kỳ nào\".",
+      "name" : "get_recurring",
+      "parameters" : {
+        "properties" : {
+          "kind" : {
+            "description" : "Bỏ trống là cả hai",
+            "enum" : [
+              "expense",
+              "income"
+            ],
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      }
+    },
+    {
+      "description" : "Những khoản sắp đến hạn hoặc đã quá hạn: ngày giao dịch định kỳ tới (hoá đơn, tiền nhà, lương), hạn trả hay hạn thu các khoản vay, hạn các hũ tiết kiệm. Dùng cho \"sắp tới phải trả gì\", \"tuần này có khoản nào\", \"có gì quá hạn không\".",
+      "name" : "get_upcoming",
+      "parameters" : {
+        "properties" : {
+          "days" : {
+            "description" : "Số ngày tới, mặc định 14, tối đa 90",
+            "type" : "integer"
+          }
+        },
+        "type" : "object"
+      }
+    },
+    {
+      "description" : "Thu, chi, để dành được (thu trừ chi), tỉ lệ để dành và tài sản ròng cuối tháng của từng tháng gần đây, kèm trung bình mỗi tháng và tháng chi nhiều nhất, ít nhất. Dùng cho so sánh nhiều tháng, xu hướng, \"trung bình mỗi tháng tiêu bao nhiêu\", \"tài sản tăng hay giảm\", \"tháng nào tiêu nhiều nhất\".",
+      "name" : "get_monthly_trend",
+      "parameters" : {
+        "properties" : {
+          "months" : {
+            "description" : "Số tháng gần nhất, tính cả tháng này; mặc định 6, tối đa 24",
+            "type" : "integer"
+          }
+        },
+        "type" : "object"
+      }
+    },
+    {
+      "description" : "Các lần chuyển tiền giữa các tài khoản của chính người dùng (kèm phí chuyển) và nạp, rút tiền ở hũ tiết kiệm, trong một khoảng ngày. Đây không phải chi tiêu. Dùng cho \"chuyển bao nhiêu từ Vietcombank sang MoMo\", \"tháng này bỏ vào hũ bao nhiêu\", \"phí chuyển khoản hết bao nhiêu\".",
+      "name" : "list_transfers",
+      "parameters" : {
+        "properties" : {
+          "account" : {
+            "description" : "Tên tài khoản hoặc hũ; bỏ trống là tất cả",
+            "type" : "string"
+          },
+          "from" : {
+            "description" : "Ngày đầu, YYYY-MM-DD",
+            "type" : "string"
+          },
+          "limit" : {
+            "description" : "Tối đa 20, mặc định 10",
+            "type" : "integer"
+          },
+          "to" : {
+            "description" : "Ngày cuối (tính cả ngày này), YYYY-MM-DD",
+            "type" : "string"
+          },
+          "type" : {
+            "description" : "account: giữa tài khoản; goal: nạp, rút hũ; bỏ trống là cả hai",
+            "enum" : [
+              "account",
+              "goal"
+            ],
+            "type" : "string"
+          }
+        },
+        "required" : [
+          "from",
+          "to"
+        ],
         "type" : "object"
       }
     },

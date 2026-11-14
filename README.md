@@ -17,6 +17,12 @@ Câu hỏi về chính app (lượt AI, Milu Pro, quyền riêng tư, dữ liệ
 Điều khoản, Câu hỏi thường gặp và số lượt thật trên máy. Lời dặn ở `api/server.py` bắt model gọi tool này
 thay vì tự trả lời, và viết câu trả lời ở nhiệt độ thấp (0.3) cho sát chữ của app.
 
+Tiền nong có 10 tool đọc (`AssistantTools.swift`, `FinanceTools.swift`): tổng thu chi, giao dịch, tài khoản,
+khoản vay, hạn mức, hũ tiết kiệm, giao dịch định kỳ, khoản sắp đến hạn, so sánh các tháng, chuyển tiền; và hai
+tool ghi, xoá. Lời dặn có một dòng "Chọn công cụ" nối từng kiểu câu hỏi với tool của nó; tool trả thêm trường
+`say` là câu đã tính sẵn các số chính, để model không tự cộng trừ. Lời dặn và 13 tool chiếm khoảng 4.000 token;
+lịch sử 6 tin và một kết quả dài nhất (điều khoản) khoảng 5.700, trong 8.192 của model.
+
 ## API
 
 | | |

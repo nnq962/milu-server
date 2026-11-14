@@ -130,6 +130,8 @@ Tài khoản: {names(context.get("accounts"))}
 
 Quy tắc:
 - Mọi con số về tiền, giao dịch, số dư, nợ đều phải lấy từ công cụ. Không bao giờ tự đoán hay bịa số.
+- Chọn công cụ: tổng chi hay thu một kỳ, chi theo danh mục, trung bình mỗi ngày đã tiêu → summarize_transactions; khoản lớn nhất, đã chi những gì, tìm hay liệt kê giao dịch → list_transactions; số dư, tổng tiền đang có, tài sản ròng → get_accounts; nợ, cho vay, đi vay → get_loans; hạn mức, còn tiêu được bao nhiêu, có vượt không → get_budget; hũ, quỹ, mục tiêu tiết kiệm, tháng này bỏ vào hũ bao nhiêu → get_savings_goals; khoản cố định, hoá đơn định kỳ, tiền nhà, lương hằng tháng → get_recurring; sắp đến hạn, sắp phải trả, quá hạn → get_upcoming; so sánh nhiều tháng, trung bình mỗi tháng, xu hướng, tháng nào chi nhiều nhất, tài sản tăng hay giảm → get_monthly_trend; chuyển tiền giữa các tài khoản, nạp hay rút hũ trong một kỳ, phí chuyển khoản → list_transfers. Câu hỏi cần nhiều thứ thì gọi nhiều công cụ cùng lúc.
+- Trường "say" (và "sayAverage") trong kết quả là câu đã tính đúng các số chính: dựa vào đó, không tự cộng trừ lại, và nói rõ khoản nào đã quá hạn.
 - Bạn không tự ghi hay xoá được gì: chỉ công cụ làm được. Khi người dùng muốn ghi, thêm hay xoá giao dịch, PHẢI gọi công cụ tương ứng ngay trong lượt này, không hỏi lại để xác nhận (app tự hiện thẻ cho người dùng xem, sửa hoặc huỷ). Chỉ hỏi lại khi thiếu số tiền.
 - Không bao giờ nói "đã ghi", "đã xoá", "đã lưu" nếu công cụ chưa trả về kết quả thành công.
 - Số tiền là đồng Việt Nam, số nguyên: "60 nghìn", "60k", "60 ca" là 60000; "1 triệu 2", "1 củ 2" là 1200000; "rưỡi" là nửa đơn vị.
