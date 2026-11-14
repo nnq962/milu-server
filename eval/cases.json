@@ -1,5 +1,5 @@
 {
-  "_about": "Câu hỏi mẫu cho Milu, hôm nay là 2026-11-12 (thứ Năm). 'expect.tool' là tool phải gọi ở lượt đầu ('none' = không gọi tool, và không được tự đưa ra số tiền). 'args': mỗi khoá là một tham số; giá trị là chuỗi/số phải khớp, hoặc {\"any\": [...]} (khớp một trong), {\"names\": [...]} (danh sách tên, khớp một trong, không phân biệt dấu), {\"absent\": true}. 'answer' (các câu chấm câu trả lời): 'has' phải có, 'not' không được có.",
+  "_about": "Câu hỏi mẫu cho Milu, hôm nay là 2026-11-12 (thứ Năm). 'expect.tool' là tool phải gọi ở lượt đầu ('none' = không gọi tool, và không được tự đưa ra số tiền). 'args': mỗi khoá là một tham số; giá trị là chuỗi/số phải khớp, hoặc {\"any\": [...]} (khớp một trong), {\"names\": [...]} (danh sách tên, khớp một trong, không phân biệt dấu), {\"absent\": true}. 'answer' (các câu chấm câu trả lời): 'has' phải có, 'not' không được có. Nhóm 'về app' (2026-11-15): câu hỏi về chính app phải gọi get_app_info. 'toolResult': {\"$appInfo\": topic} lấy kết quả thật của app trong app.json (appInfo); 'answer.hasAny': mỗi nhóm phải có ít nhất một chữ.",
   "cases": [
     {"id": "r01", "group": "đọc", "q": "tháng này mình tiêu bao nhiêu", "expect": {"tool": "summarize_transactions", "args": {"kind": "expense", "from": "2026-11-01", "to": {"any": ["2026-11-30", "2026-11-12"]}}}},
     {"id": "r02", "group": "đọc", "q": "tuần trước chi ăn uống hết bao nhiêu", "expect": {"tool": "summarize_transactions", "args": {"kind": "expense", "from": "2026-11-02", "to": "2026-11-08", "categories": {"names": ["Ăn uống"]}}}},
@@ -17,7 +17,6 @@
     {"id": "r14", "group": "đọc", "q": "từ đầu tháng tới giờ tiêu hết bao nhiêu rồi", "expect": {"tool": "summarize_transactions", "args": {"kind": "expense", "from": "2026-11-01", "to": {"any": ["2026-11-12", "2026-11-30"]}}}},
     {"id": "r15", "group": "đọc", "q": "tháng 9 đi taxi hết bao nhiêu", "expect": {"tool": "summarize_transactions", "args": {"kind": "expense", "from": "2026-09-01", "to": "2026-09-30", "categories": {"names": ["Taxi, xe ôm", "Di chuyển"]}}}},
     {"id": "r16", "group": "đọc", "q": "tuần này mua sắm online bao nhiêu", "expect": {"tool": "summarize_transactions", "args": {"kind": "expense", "from": "2026-11-09", "to": {"any": ["2026-11-15", "2026-11-12"]}, "categories": {"names": ["Mua online", "Mua sắm"]}}}},
-
     {"id": "w01", "group": "ghi", "q": "ghi ăn trưa 60k", "expect": {"tool": "record_transaction", "args": {"kind": "expense", "amount": 60000, "category": {"names": ["Ăn trưa", "Ăn uống"]}}}},
     {"id": "w02", "group": "ghi", "q": "hôm qua đổ xăng 80 nghìn", "expect": {"tool": "record_transaction", "args": {"kind": "expense", "amount": 80000, "date": "2026-11-11", "category": {"names": ["Xăng", "Di chuyển"]}}}},
     {"id": "w03", "group": "ghi", "q": "nhận lương 25 triệu", "expect": {"tool": "record_transaction", "args": {"kind": "income", "amount": 25000000, "category": {"names": ["Lương", "Lương chính"]}}}},
@@ -31,50 +30,56 @@
     {"id": "w11", "group": "ghi", "q": "ghi 50k", "expect": {"tool": "record_transaction", "args": {"amount": 50000}}},
     {"id": "w12", "group": "ghi", "q": "ghi chi tiêu giúp mình", "expect": {"tool": "none"}},
     {"id": "w13", "group": "ghi", "q": "sáng nay ăn phở 55k với cà phê 30k", "expect": {"tool": "record_transaction", "args": {"amount": {"any": [55000, 30000, 85000]}}}},
-
     {"id": "d01", "group": "xoá", "q": "xoá khoản cà phê hôm nay", "expect": {"tool": "list_transactions", "args": {"from": "2026-11-12", "to": "2026-11-12"}}},
-    {"id": "d02", "group": "xoá", "q": "xoá khoản cà phê hôm nay", "history": [
-      {"role": "user", "content": "xoá khoản cà phê hôm nay"},
-      {"role": "assistant", "content": "", "toolCalls": [{"id": "c1", "name": "list_transactions", "arguments": {"from": "2026-11-12", "to": "2026-11-12", "search": "cà phê"}}]},
-      {"role": "tool", "toolName": "list_transactions", "content": "{\"count\":1,\"transactions\":[{\"ref\":\"ab12cd34\",\"date\":\"2026-11-12\",\"kind\":\"expense\",\"amount\":45000,\"category\":\"Cà phê\",\"account\":\"MoMo\",\"note\":\"Highlands\"}]}"}
-    ], "continue": true, "expect": {"tool": "delete_transaction", "args": {"ref": "ab12cd34"}}},
-
+    {"id": "d02", "group": "xoá", "q": "xoá khoản cà phê hôm nay", "history": [{"role": "user", "content": "xoá khoản cà phê hôm nay"}, {"role": "assistant", "content": "", "toolCalls": [{"id": "c1", "name": "list_transactions", "arguments": {"from": "2026-11-12", "to": "2026-11-12", "search": "cà phê"}}]}, {"role": "tool", "toolName": "list_transactions", "content": "{\"count\":1,\"transactions\":[{\"ref\":\"ab12cd34\",\"date\":\"2026-11-12\",\"kind\":\"expense\",\"amount\":45000,\"category\":\"Cà phê\",\"account\":\"MoMo\",\"note\":\"Highlands\"}]}"}], "continue": true, "expect": {"tool": "delete_transaction", "args": {"ref": "ab12cd34"}}},
     {"id": "n01", "group": "trò chuyện", "q": "chào Milu", "expect": {"tool": "none"}},
-    {"id": "n02", "group": "trò chuyện", "q": "bạn là ai vậy", "expect": {"tool": "none"}},
+    {"id": "n02", "group": "trò chuyện", "q": "bạn là ai vậy", "expect": {"tool": {"any": ["none", "get_app_info"]}}},
     {"id": "n03", "group": "trò chuyện", "q": "thời tiết hôm nay thế nào", "expect": {"tool": "none"}},
     {"id": "n04", "group": "trò chuyện", "q": "làm sao để tiết kiệm tiền hiệu quả", "expect": {"tool": {"any": ["none", "summarize_transactions"]}}},
-
-    {"id": "f01", "group": "nối tiếp", "q": "còn tháng trước thì sao", "history": [
-      {"role": "user", "content": "tháng này chi ăn uống bao nhiêu"},
-      {"role": "assistant", "content": "Tháng này bạn đã chi **1.460.000đ** cho ăn uống 🍜"}
-    ], "expect": {"tool": "summarize_transactions", "args": {"kind": "expense", "from": "2026-10-01", "to": "2026-10-31", "categories": {"names": ["Ăn uống"]}}}},
-    {"id": "f02", "group": "nối tiếp", "q": "ghi thêm 20k gửi xe bằng ví đó", "history": [
-      {"role": "user", "content": "số dư momo còn bao nhiêu"},
-      {"role": "assistant", "content": "MoMo còn **1.060.000đ** nha 💸"}
-    ], "expect": {"tool": "record_transaction", "args": {"amount": 20000, "account": {"names": ["MoMo"]}, "category": {"names": ["Gửi xe", "Di chuyển"]}}}},
-
+    {"id": "f01", "group": "nối tiếp", "q": "còn tháng trước thì sao", "history": [{"role": "user", "content": "tháng này chi ăn uống bao nhiêu"}, {"role": "assistant", "content": "Tháng này bạn đã chi **1.460.000đ** cho ăn uống 🍜"}], "expect": {"tool": "summarize_transactions", "args": {"kind": "expense", "from": "2026-10-01", "to": "2026-10-31", "categories": {"names": ["Ăn uống"]}}}},
+    {"id": "f02", "group": "nối tiếp", "q": "ghi thêm 20k gửi xe bằng ví đó", "history": [{"role": "user", "content": "số dư momo còn bao nhiêu"}, {"role": "assistant", "content": "MoMo còn **1.060.000đ** nha 💸"}], "expect": {"tool": "record_transaction", "args": {"amount": 20000, "account": {"names": ["MoMo"]}, "category": {"names": ["Gửi xe", "Di chuyển"]}}}},
     {"id": "k01", "group": "không dấu", "q": "thang nay tieu bao nhieu", "expect": {"tool": "summarize_transactions", "args": {"kind": "expense", "from": "2026-11-01"}}},
     {"id": "k02", "group": "không dấu", "q": "ghi an sang 30k", "expect": {"tool": "record_transaction", "args": {"amount": 30000, "category": {"names": ["Ăn sáng", "Ăn uống"]}}}},
     {"id": "k03", "group": "không dấu", "q": "so du vietcombank", "expect": {"tool": "get_accounts"}},
     {"id": "k04", "group": "không dấu", "q": "tuan nay chi tieu sao roi", "expect": {"tool": "summarize_transactions", "args": {"kind": "expense", "from": "2026-11-09"}}},
-
-    {"id": "a01", "group": "câu trả lời", "q": "tháng này chi ăn uống bao nhiêu", "toolCall": {"name": "summarize_transactions", "arguments": {"from": "2026-11-01", "to": "2026-11-30", "kind": "expense", "categories": ["Ăn uống"]}},
-     "toolResult": {"from": "2026-11-01", "to": "2026-11-30", "kind": "expense", "total": 1460000, "totalText": "1.460.000 ₫", "count": 7, "byCategory": [{"name": "Ăn uống", "amount": 1460000}], "byAccount": [{"name": "Vietcombank", "amount": 685000}, {"name": "Techcombank", "amount": 520000}]},
-     "answer": {"has": ["1.460.000"], "not": ["mình đã chi", "mình tiêu"]}},
-    {"id": "a02", "group": "câu trả lời", "q": "ghi ăn trưa 60k bằng momo", "toolCall": {"name": "record_transaction", "arguments": {"kind": "expense", "amount": 60000, "category": "Ăn trưa", "account": "MoMo"}},
-     "toolResult": {"ok": true, "recorded": {"ref": "9f8e7d6c", "date": "2026-11-12", "kind": "expense", "amount": 60000, "category": "Ăn trưa", "account": "MoMo", "note": ""}},
-     "answer": {"has": ["60.000"], "not": ["bạn muốn ghi", "xác nhận"]}},
-    {"id": "a03", "group": "câu trả lời", "q": "tổng tài sản của mình", "toolCall": {"name": "get_accounts", "arguments": {}},
-     "toolResult": {"accounts": [{"name": "Vietcombank", "type": "Ngân hàng", "balance": 45800000}, {"name": "MoMo", "type": "Ví điện tử", "balance": 1060000}, {"name": "Thẻ VPBank Visa", "type": "Thẻ tín dụng", "balance": -6430000}], "netWorth": 191630000, "netWorthText": "191.630.000 ₫", "creditDebt": 6430000, "lent": 0},
-     "answer": {"has": ["191.630.000"], "not": []}},
-    {"id": "a04", "group": "câu trả lời", "q": "tháng 9 đi taxi hết bao nhiêu", "toolCall": {"name": "summarize_transactions", "arguments": {"from": "2026-09-01", "to": "2026-09-30", "kind": "expense", "categories": ["Taxi, xe ôm"]}},
-     "toolResult": {"from": "2026-09-01", "to": "2026-09-30", "kind": "expense", "total": 0, "totalText": "0 ₫", "count": 0, "byCategory": [], "byAccount": []},
-     "answer": {"has": [], "not": [], "noMoneyExcept": ["0"]}},
-    {"id": "a05", "group": "câu trả lời", "q": "ai đang nợ mình", "toolCall": {"name": "get_loans", "arguments": {"direction": "lent"}},
-     "toolResult": {"loans": []},
-     "answer": {"has": [], "not": [], "noMoneyExcept": []}},
-    {"id": "a06", "group": "câu trả lời", "q": "tuần trước tiêu bao nhiêu", "toolCall": {"name": "summarize_transactions", "arguments": {"from": "2026-11-02", "to": "2026-11-08", "kind": "expense"}},
-     "toolResult": {"from": "2026-11-02", "to": "2026-11-08", "kind": "expense", "total": 2315000, "totalText": "2.315.000 ₫", "count": 14, "byCategory": [{"name": "Ăn uống", "amount": 780000}, {"name": "Mua sắm", "amount": 980000}, {"name": "Di chuyển", "amount": 555000}], "byAccount": []},
-     "answer": {"has": ["2.315.000"], "not": []}}
+    {"id": "a01", "group": "câu trả lời", "q": "tháng này chi ăn uống bao nhiêu", "toolCall": {"name": "summarize_transactions", "arguments": {"from": "2026-11-01", "to": "2026-11-30", "kind": "expense", "categories": ["Ăn uống"]}}, "toolResult": {"from": "2026-11-01", "to": "2026-11-30", "kind": "expense", "total": 1460000, "totalText": "1.460.000 ₫", "count": 7, "byCategory": [{"name": "Ăn uống", "amount": 1460000}], "byAccount": [{"name": "Vietcombank", "amount": 685000}, {"name": "Techcombank", "amount": 520000}]}, "answer": {"has": ["1.460.000"], "not": ["mình đã chi", "mình tiêu"]}},
+    {"id": "a02", "group": "câu trả lời", "q": "ghi ăn trưa 60k bằng momo", "toolCall": {"name": "record_transaction", "arguments": {"kind": "expense", "amount": 60000, "category": "Ăn trưa", "account": "MoMo"}}, "toolResult": {"ok": true, "recorded": {"ref": "9f8e7d6c", "date": "2026-11-12", "kind": "expense", "amount": 60000, "category": "Ăn trưa", "account": "MoMo", "note": ""}}, "answer": {"has": ["60.000"], "not": ["bạn muốn ghi", "xác nhận"]}},
+    {"id": "a03", "group": "câu trả lời", "q": "tổng tài sản của mình", "toolCall": {"name": "get_accounts", "arguments": {}}, "toolResult": {"accounts": [{"name": "Vietcombank", "type": "Ngân hàng", "balance": 45800000}, {"name": "MoMo", "type": "Ví điện tử", "balance": 1060000}, {"name": "Thẻ VPBank Visa", "type": "Thẻ tín dụng", "balance": -6430000}], "netWorth": 191630000, "netWorthText": "191.630.000 ₫", "creditDebt": 6430000, "lent": 0}, "answer": {"has": ["191.630.000"], "not": []}},
+    {"id": "a04", "group": "câu trả lời", "q": "tháng 9 đi taxi hết bao nhiêu", "toolCall": {"name": "summarize_transactions", "arguments": {"from": "2026-09-01", "to": "2026-09-30", "kind": "expense", "categories": ["Taxi, xe ôm"]}}, "toolResult": {"from": "2026-09-01", "to": "2026-09-30", "kind": "expense", "total": 0, "totalText": "0 ₫", "count": 0, "byCategory": [], "byAccount": []}, "answer": {"has": [], "not": [], "noMoneyExcept": ["0"]}},
+    {"id": "a05", "group": "câu trả lời", "q": "ai đang nợ mình", "toolCall": {"name": "get_loans", "arguments": {"direction": "lent"}}, "toolResult": {"loans": []}, "answer": {"has": [], "not": [], "noMoneyExcept": []}},
+    {"id": "a06", "group": "câu trả lời", "q": "tuần trước tiêu bao nhiêu", "toolCall": {"name": "summarize_transactions", "arguments": {"from": "2026-11-02", "to": "2026-11-08", "kind": "expense"}}, "toolResult": {"from": "2026-11-02", "to": "2026-11-08", "kind": "expense", "total": 2315000, "totalText": "2.315.000 ₫", "count": 14, "byCategory": [{"name": "Ăn uống", "amount": 780000}, {"name": "Mua sắm", "amount": 980000}, {"name": "Di chuyển", "amount": 555000}], "byAccount": []}, "answer": {"has": ["2.315.000"], "not": []}},
+    {"id": "p01", "group": "về app", "q": "còn bao nhiêu lượt hỏi AI", "expect": {"tool": "get_app_info", "args": {"topic": "ai_quota"}}},
+    {"id": "p02", "group": "về app", "q": "khi nào mình có lượt mới", "expect": {"tool": "get_app_info", "args": {"topic": "ai_quota"}}},
+    {"id": "p03", "group": "về app", "q": "hỏi milu có mất phí không", "expect": {"tool": "get_app_info", "args": {"topic": "ai_quota"}}},
+    {"id": "p04", "group": "về app", "q": "con bao nhieu luot ai", "expect": {"tool": "get_app_info", "args": {"topic": "ai_quota"}}},
+    {"id": "p05", "group": "về app", "q": "chính sách quyền riêng tư của milu thế nào", "expect": {"tool": "get_app_info", "args": {"topic": "privacy"}}},
+    {"id": "p06", "group": "về app", "q": "AI có lưu câu hỏi của mình không", "expect": {"tool": "get_app_info", "args": {"topic": {"any": ["privacy", "data"]}}}},
+    {"id": "p07", "group": "về app", "q": "milu có bán dữ liệu của mình cho ai không", "expect": {"tool": "get_app_info", "args": {"topic": "privacy"}}},
+    {"id": "p08", "group": "về app", "q": "ghi âm giọng nói có bị lưu lại không", "expect": {"tool": "get_app_info", "args": {"topic": {"any": ["privacy", "security"]}}}},
+    {"id": "p09", "group": "về app", "q": "dữ liệu của mình lưu ở đâu", "expect": {"tool": "get_app_info", "args": {"topic": {"any": ["data", "privacy"]}}}},
+    {"id": "p10", "group": "về app", "q": "đổi điện thoại thì có mất dữ liệu không", "expect": {"tool": "get_app_info", "args": {"topic": "data"}}},
+    {"id": "p11", "group": "về app", "q": "làm sao xoá hết dữ liệu", "expect": {"tool": "get_app_info", "args": {"topic": {"any": ["data", "privacy"]}}}},
+    {"id": "p12", "group": "về app", "q": "milu pro giá bao nhiêu", "expect": {"tool": "get_app_info", "args": {"topic": "pro"}}},
+    {"id": "p13", "group": "về app", "q": "pro có gì hơn bản miễn phí", "expect": {"tool": "get_app_info", "args": {"topic": "pro"}}},
+    {"id": "p14", "group": "về app", "q": "huỷ gói pro kiểu gì", "expect": {"tool": "get_app_info", "args": {"topic": "pro"}}},
+    {"id": "p15", "group": "về app", "q": "bật khoá face id ở đâu", "expect": {"tool": "get_app_info", "args": {"topic": "security"}}},
+    {"id": "p16", "group": "về app", "q": "điều khoản sử dụng của app", "expect": {"tool": "get_app_info", "args": {"topic": {"any": ["terms"]}}}},
+    {"id": "p17", "group": "về app", "q": "email hỗ trợ của milu là gì", "expect": {"tool": "get_app_info", "args": {"topic": "support"}}},
+    {"id": "p18", "group": "về app", "q": "app đang ở phiên bản nào", "expect": {"tool": "get_app_info", "args": {"topic": "support"}}},
+    {"id": "p19", "group": "về app", "q": "đặt hạn mức chi tiêu ở đâu trong app", "expect": {"tool": "get_app_info", "args": {"topic": "features"}}},
+    {"id": "p20", "group": "về app", "q": "milu co doc duoc du lieu ngan hang cua minh khong", "expect": {"tool": "get_app_info", "args": {"topic": {"any": ["privacy", "data"]}}}},
+    {"id": "q01", "group": "trả lời về app", "q": "còn bao nhiêu lượt hỏi AI", "toolCall": {"name": "get_app_info", "arguments": {"topic": "ai_quota"}}, "toolResult": {"$appInfo": "ai_quota"}, "answer": {"has": ["16/11"], "hasAny": [["8 lượt"]], "not": ["10 lượt còn"], "noMoneyExcept": []}},
+    {"id": "q02", "group": "trả lời về app", "q": "AI có lưu câu hỏi của mình không", "toolCall": {"name": "get_app_info", "arguments": {"topic": "privacy"}}, "toolResult": {"$appInfo": "privacy"}, "answer": {"hasAny": [["không lưu", "không được lưu", "bỏ đi", "không ghi"]], "not": ["được lưu lại trên máy chủ"], "noMoneyExcept": []}},
+    {"id": "q03", "group": "trả lời về app", "q": "milu pro giá bao nhiêu", "toolCall": {"name": "get_app_info", "arguments": {"topic": "pro"}}, "toolResult": {"$appInfo": "pro"}, "answer": {"hasAny": [["chưa mở bán", "chưa bán"]], "noMoneyExcept": []}},
+    {"id": "q04", "group": "trả lời về app", "q": "đổi điện thoại thì có mất dữ liệu không", "toolCall": {"name": "get_app_info", "arguments": {"topic": "data"}}, "toolResult": {"$appInfo": "data"}, "answer": {"hasAny": [["iCloud"]], "noMoneyExcept": []}},
+    {"id": "q05", "group": "trả lời về app", "q": "email hỗ trợ của milu là gì", "toolCall": {"name": "get_app_info", "arguments": {"topic": "support"}}, "toolResult": {"$appInfo": "support"}, "answer": {"has": ["support@milu.nnqlab.dev"], "noMoneyExcept": []}},
+    {"id": "q06", "group": "trả lời về app", "q": "bật khoá face id ở đâu", "toolCall": {"name": "get_app_info", "arguments": {"topic": "security"}}, "toolResult": {"$appInfo": "security"}, "answer": {"has": ["Bảo mật"], "hasAny": [["Pro"]], "noMoneyExcept": []}},
+    {"id": "q07", "group": "trả lời về app", "q": "milu có bán dữ liệu của mình cho ai không", "toolCall": {"name": "get_app_info", "arguments": {"topic": "privacy"}}, "toolResult": {"$appInfo": "privacy"}, "answer": {"hasAny": [["không bán", "hông bán", "chẳng bán", "không bao giờ bán"]], "noMoneyExcept": []}},
+    {"id": "q08", "group": "trả lời về app", "q": "hỏi về lượt thì có bị trừ lượt không", "toolCall": {"name": "get_app_info", "arguments": {"topic": "ai_quota"}}, "toolResult": {"$appInfo": "ai_quota"}, "answer": {"hasAny": [["không tốn", "không bị trừ", "không trừ", "không mất", "không tính", "miễn phí"]], "noMoneyExcept": []}},
+    {"id": "q09", "group": "trả lời về app", "q": "làm sao xoá hết dữ liệu", "toolCall": {"name": "get_app_info", "arguments": {"topic": "data"}}, "toolResult": {"$appInfo": "data"}, "answer": {"hasAny": [["Xoá toàn bộ dữ liệu", "cuối Cài đặt"]], "noMoneyExcept": []}},
+    {"id": "q10", "group": "trả lời về app", "q": "pro có gì hơn bản miễn phí", "toolCall": {"name": "get_app_info", "arguments": {"topic": "pro"}}, "toolResult": {"$appInfo": "pro"}, "answer": {"has": ["150"], "noMoneyExcept": []}},
+    {"id": "q11", "group": "trả lời về app", "q": "hết lượt rồi hả, khi nào hỏi tiếp được", "toolCall": {"name": "get_app_info", "arguments": {"topic": "ai_quota"}}, "toolResult": {"now": {"plan": "Miễn phí", "weeklyAllowance": 10, "weeklyLeft": 0, "totalLeft": 0, "weekRenews": "0 giờ thứ Hai 16/11"}, "rules": ["Lượt AI: Gói miễn phí có 10 lượt hỏi mỗi tuần, làm mới lúc 0 giờ thứ Hai; lượt không dùng hết không cộng dồn sang tuần sau. Mỗi bước Làm quen với Milu bạn hoàn thành được tặng 5 lượt thưởng một lần, dùng trong 7 ngày và được dùng trước lượt của tuần. Nhờ Milu AI ghi hay xoá giao dịch không tốn lượt. Câu Milu không trả lời được (mất mạng, máy chủ lỗi, bạn bấm dừng) được trả lại lượt. Lượt AI không quy đổi thành tiền và không chuyển cho người khác được. Milu có thể thay đổi số lượt hoặc cách tính lượt và sẽ báo trong app trước khi áp dụng; khi thấy dấu hiệu lạm dụng, Milu có thể tạm giới hạn việc dùng Milu AI.", "Milu Pro có 150 lượt mỗi tuần thay cho 10.", "Hỏi Milu về chính app (lượt AI, Milu Pro, quyền riêng tư…) cũng không tốn lượt."], "say": "Bạn đã hết lượt hỏi tuần này; lượt mới có lúc 0 giờ thứ Hai 16/11. Ghi, xoá giao dịch và hỏi về app vẫn dùng được.", "topic": "ai_quota", "where": "Cài đặt → Hạn mức AI. Mở Cài đặt bằng ảnh đại diện ở góc trên bên trái."}, "answer": {"has": ["16/11"], "hasAny": [["hết lượt", "hết sạch", "0 lượt"]], "not": ["còn 3 lượt", "còn 8 lượt"], "noMoneyExcept": []}},
+    {"id": "q12", "group": "trả lời về app", "q": "đổi iphone thì lượt AI với tên mình có theo qua không", "toolCall": {"name": "get_app_info", "arguments": {"topic": "data"}}, "toolResult": {"$appInfo": "data"}, "answer": {"hasAny": [["iCloud"]], "not": ["chỉ lưu trên iPhone này"], "noMoneyExcept": []}},
+    {"id": "q13", "group": "trả lời về app", "q": "lịch sử trò chuyện với milu có lên icloud không", "toolCall": {"name": "get_app_info", "arguments": {"topic": "data"}}, "toolResult": {"$appInfo": "data"}, "answer": {"hasAny": [["chỉ lưu trên iPhone", "chỉ trên iPhone", "chỉ nằm trên", "không lên iCloud", "không đồng bộ"]], "noMoneyExcept": []}}
   ]
 }

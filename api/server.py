@@ -139,7 +139,9 @@ Quy tắc:
 - Trả lời ngắn: một câu chính, rồi nếu cần thêm tối đa 4 gạch đầu dòng.
 - Định dạng (app chỉ hiểu đúng các kiểu này): in đậm bằng **...** cho số tiền hoặc tên quan trọng; mỗi gạch đầu dòng là một dòng bắt đầu bằng "• " (dấu chấm tròn và một dấu cách). KHÔNG dùng "*", "-" hay "+" làm gạch đầu dòng, không gạch đầu dòng lồng nhau, không tiêu đề "#", không bảng, không trích dẫn ">", không code. Không để dòng trống giữa các gạch đầu dòng; một dòng trống giữa câu chính và danh sách là được.
 - Viết số tiền kiểu Việt Nam: 1.400.000đ. Viết ngày kiểu 5/11 (thêm năm chỉ khi khác năm nay), hoặc "hôm nay", "hôm qua".
-- Câu hỏi ngoài tài chính: trả lời ngắn rồi gợi ý quay lại việc tiền nong."""
+- Câu hỏi về chính app Milu (còn bao nhiêu lượt hỏi, khi nào có lượt mới, cách tính lượt, Milu Pro và giá, quyền riêng tư, dữ liệu lưu ở đâu hay có bị gửi đi không, AI có lưu câu hỏi không, iCloud, sao lưu, đổi máy, xoá dữ liệu, Face ID, điều khoản, tính năng nằm ở đâu, liên hệ, phiên bản): PHẢI gọi get_app_info với topic hợp nhất, rồi trả lời đúng theo kết quả. Không thêm điều kết quả không nói, không đoán số lượt, giá hay ngày. Kết quả không nói tới thì bảo là chưa rõ và chỉ email hỗ trợ (topic support).
+- Chuyện quyền riêng tư, dữ liệu, điều khoản: nói nghiêm túc, rõ ràng, trấn an bằng đúng sự thật trong kết quả; đùa nhẹ thôi.
+- Câu hỏi không về tiền nong cũng không về app Milu: trả lời ngắn rồi gợi ý quay lại việc tiền nong."""
 
 
 def to_ollama_message(message: dict) -> dict | None:
@@ -176,6 +178,8 @@ def to_ollama_tool(tool: dict) -> dict:
 # "đ" alone, not the start of a word: "tháng 9 đi" is no sum.
 MONEY = re.compile(r"\d[\d.,]*\s*(?:đ(?!\w)|₫|k\b|nghìn|ngàn|triệu|tr\b|củ\b)", re.IGNORECASE)
 BULLET = re.compile(r"^[ \t]*(?:[*+\-•]\s+)+", re.MULTILINE)
+# A count of lượt said with no tool behind it ("còn 7 lượt"): only get_app_info knows.
+TURNS = re.compile(r"\d+\s*lượt", re.IGNORECASE)
 CLAIMS = re.compile(r"đã (?:ghi|xoá|xóa|lưu|thêm)|(?:ghi|xoá|xóa|lưu|thêm) (?:rồi|xong)", re.IGNORECASE)
 NUDGE = ("(Nhắc từ hệ thống: bạn chưa gọi công cụ nào. Không được tự đưa ra số tiền hay nói đã ghi/xoá. "
          "Hãy gọi công cụ phù hợp ngay bây giờ, hoặc nói rõ bạn cần thêm thông tin gì.)")
@@ -213,10 +217,15 @@ def chat(body: dict) -> dict:
     # from a tool's result, it does not: that is quick and plain.
     # The tool chosen at 0, the same every time; the answer written warmer, a new way each time
     # (at 0 it copied the prompt's examples word for word).
-    reply = ask_model(convo, tools, think=not grounded, temperature=0.8 if grounded else 0)
+    # Telling of the app itself (its lượt, Milu Pro, privacy), the words kept closer to what the
+    # app said: warm at 0.8, it added rules of its own (2026-11-15).
+    about_app = any(m["role"] == "tool" and m.get("tool_name") == "get_app_info" for m in messages[last_user + 1:])
+    temperature = (0.3 if about_app else 0.8) if grounded else 0
+    reply = ask_model(convo, tools, think=not grounded, temperature=temperature)
     content = (reply.get("content") or "").strip()
-    # A sum or a "done" with no tool behind it: asked again once, told so.
-    if tools and not grounded and not reply.get("tool_calls") and (MONEY.search(content) or CLAIMS.search(content)):
+    # A sum, a count of lượt or a "done" with no tool behind it: asked again once, told so.
+    if tools and not grounded and not reply.get("tool_calls") and (
+            MONEY.search(content) or TURNS.search(content) or CLAIMS.search(content)):
         reply = ask_model([*convo, {"role": "assistant", "content": content}, {"role": "user", "content": NUDGE}],
                           tools, think=True)
     calls = []

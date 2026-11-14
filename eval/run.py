@@ -98,13 +98,17 @@ def check_answer_case(case: dict, reply: dict) -> tuple[list[str], list[str]]:
     if not content:
         return ["trả lời rỗng"], []
     problems, notes = [], []
-    lowered = content.lower()
+    # Words compared without accents or bold: "xóa" is "xoá", "**3** lượt" is "3 lượt".
+    lowered = key(content.replace("**", ""))
     answer = case["answer"]
     for text in answer.get("has", []):
-        if text.lower() not in lowered:
+        if key(text) not in lowered:
             problems.append(f"thiếu {text!r}")
+    for group in answer.get("hasAny", []):
+        if not any(key(text) in lowered for text in group):
+            problems.append(f"thiếu một trong {group!r}")
     for text in answer.get("not", []):
-        if text.lower() in lowered:
+        if key(text) in lowered:
             problems.append(f"có {text!r}")
     if "noMoneyExcept" in answer:
         allowed = {re.sub(r"\D", "", a) for a in answer["noMoneyExcept"]}
@@ -117,7 +121,7 @@ def check_answer_case(case: dict, reply: dict) -> tuple[list[str], list[str]]:
             problems.append(f"gạch đầu dòng sai kiểu: {stripped[:30]!r}")
         if stripped.startswith("#"):
             problems.append("có tiêu đề #")
-    if re.search(r"\bmình (đã )?(chi|tiêu|nhận)", lowered):
+    if re.search(r"\bmình (đã )?(chi|tiêu|nhận)", content.lower()):
         problems.append("xưng 'mình' cho người dùng")
     if not EMOJI.search(content):
         notes.append("không có emoji")
@@ -129,12 +133,16 @@ def check_answer_case(case: dict, reply: dict) -> tuple[list[str], list[str]]:
 # MARK: - Running
 
 
-def messages_for(case: dict) -> list[dict]:
+def messages_for(case: dict, app: dict) -> list[dict]:
     if "toolCall" in case:
+        result = case["toolResult"]
+        # The app's own answer to get_app_info, as exported with the tools (app.json "appInfo").
+        if isinstance(result, dict) and "$appInfo" in result:
+            result = app["appInfo"][result["$appInfo"]]
         return [
             {"role": "user", "content": case["q"]},
             {"role": "assistant", "content": "", "toolCalls": [{"id": "c1", **case["toolCall"]}]},
-            {"role": "tool", "toolName": case["toolCall"]["name"], "content": json.dumps(case["toolResult"], ensure_ascii=False)},
+            {"role": "tool", "toolName": case["toolCall"]["name"], "content": json.dumps(result, ensure_ascii=False)},
         ]
     history = list(case.get("history") or [])
     return history if case.get("continue") else [*history, {"role": "user", "content": case["q"]}]
@@ -155,7 +163,7 @@ def main() -> None:
 
     rows = []
     for case in cases:
-        body = {"messages": messages_for(case), "tools": app["tools"], "context": app["context"]}
+        body = {"messages": messages_for(case, app), "tools": app["tools"], "context": app["context"]}
         passes, times, problems, notes, sample = 0, [], [], [], ""
         for _ in range(args.runs):
             try:

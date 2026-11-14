@@ -1,4 +1,126 @@
 {
+  "appInfo" : {
+    "ai_quota" : {
+      "now" : {
+        "bonusExpires" : "thứ Năm 19/11 lúc 14:30",
+        "bonusLeft" : 5,
+        "plan" : "Miễn phí",
+        "totalLeft" : 8,
+        "weekRenews" : "0 giờ thứ Hai 16/11",
+        "weeklyAllowance" : 10,
+        "weeklyLeft" : 3
+      },
+      "rules" : [
+        "Lượt AI: Gói miễn phí có 10 lượt hỏi mỗi tuần, làm mới lúc 0 giờ thứ Hai; lượt không dùng hết không cộng dồn sang tuần sau. Mỗi bước Làm quen với Milu bạn hoàn thành được tặng 5 lượt thưởng một lần, dùng trong 7 ngày và được dùng trước lượt của tuần. Nhờ Milu AI ghi hay xoá giao dịch không tốn lượt. Câu Milu không trả lời được (mất mạng, máy chủ lỗi, bạn bấm dừng) được trả lại lượt. Lượt AI không quy đổi thành tiền và không chuyển cho người khác được. Milu có thể thay đổi số lượt hoặc cách tính lượt và sẽ báo trong app trước khi áp dụng; khi thấy dấu hiệu lạm dụng, Milu có thể tạm giới hạn việc dùng Milu AI.",
+        "Milu Pro có 150 lượt mỗi tuần thay cho 10.",
+        "Hỏi Milu về chính app (lượt AI, Milu Pro, quyền riêng tư…) cũng không tốn lượt."
+      ],
+      "say" : "Bạn còn 8 lượt hỏi: 3 lượt của tuần (làm mới lúc 0 giờ thứ Hai 16/11) và 5 lượt thưởng (hết hạn thứ Năm 19/11 lúc 14:30).",
+      "topic" : "ai_quota",
+      "where" : "Cài đặt → Hạn mức AI. Mở Cài đặt bằng ảnh đại diện ở góc trên bên trái."
+    },
+    "data" : {
+      "eraseAll" : "Xoá hết trong app: Cài đặt → kéo xuống cuối → \"Xoá toàn bộ dữ liệu\" (hỏi lại hai lần). Xoá cả trong iCloud và trên các thiết bị khác dùng chung Apple ID, không lấy lại được.",
+      "facts" : [
+        "Dữ liệu bạn ghi trong Milu: Tài khoản, giao dịch, hũ tiết kiệm, khoản vay, hạng mục và danh bạ được lưu trên iPhone này. Khi iPhone đăng nhập iCloud, chúng được đồng bộ vào iCloud riêng của bạn (do Apple giữ, tính vào dung lượng iCloud của bạn), để các thiết bị dùng chung Apple ID có cùng dữ liệu và dữ liệu tự về khi bạn cài lại app hay đổi máy. Milu không có máy chủ lưu dữ liệu này và không xem được iCloud của bạn. Một vài cài đặt cũng đi theo bạn qua iCloud theo cách đó: hạn mức chi tiêu, tên hiển thị và hình đại diện, các lựa chọn thông báo, cùng lượt AI còn lại. Giao diện, khoá Face ID và lịch sử trò chuyện với Milu AI chỉ lưu trên iPhone này. Nếu bạn bật sao lưu iCloud hoặc sao lưu iPhone vào máy tính, dữ liệu cũng có thể nằm trong bản sao lưu đó, do Apple và bạn quản lý.",
+        "Quyền của bạn: Bạn xem, sửa hoặc xoá được từng mục ngay trong app. \"Xoá toàn bộ dữ liệu\" ở cuối Cài đặt xoá mọi số liệu và cài đặt (cả trong iCloud và trên các thiết bị khác của bạn), cùng lịch sử trò chuyện trên máy này. Lượt AI còn lại và các bước Làm quen đã xong vẫn được giữ, trên máy và trong iCloud, để lượt thưởng không bị nhận lại nhiều lần. Xoá app khỏi iPhone chỉ xoá dữ liệu trên máy đó; bản trong iCloud vẫn còn. Bạn có thể xoá hẳn trong Cài đặt của iPhone → tên bạn → iCloud → Quản lý dung lượng."
+      ],
+      "iCloudNow" : "iCloud đang bật: dữ liệu được đồng bộ vào iCloud của bạn",
+      "topic" : "data",
+      "where" : "Trạng thái đồng bộ: Cài đặt → Sao lưu & đồng bộ → Đồng bộ iCloud."
+    },
+    "features" : {
+      "faq" : [
+        "Dữ liệu của tôi lưu ở đâu?: Trên máy này, và trong iCloud của bạn khi iPhone đăng nhập iCloud: xoá app rồi cài lại, hay đổi máy cùng Apple ID, dữ liệu tự về. Milu không có máy chủ lưu dữ liệu và không xem được iCloud của bạn.",
+        "Hạn mức chi tiêu tính thế nào?: Cộng mọi khoản chi trong tháng, cả phí chuyển khoản và lãi vay; không tính các khoản bạn đánh dấu không tính vào báo cáo và các tài khoản đang khoá. Đặt ở Cài đặt → Hạn mức chi tiêu.",
+        "Lượt AI là gì?: Mỗi câu hỏi gửi Milu AI dùng một lượt; nhờ Milu ghi hay xoá giao dịch, hay hỏi về chính Milu (lượt AI, Milu Pro, quyền riêng tư), thì không tốn lượt, và câu Milu không trả lời được (mất mạng, bấm dừng) được trả lại lượt. Mỗi tuần có 10 lượt miễn phí, làm mới lúc 0 giờ thứ Hai. Mỗi bước Làm quen với Milu bạn làm xong được thêm 5 lượt thưởng, dùng trong 7 ngày.",
+        "Chuyển tiền giữa các tài khoản có tính là chi không?: Không. Chỉ phí chuyển khoản (nếu có) được tính là chi."
+      ],
+      "settings" : [
+        "Hạn mức AI, Nâng cấp Milu Pro",
+        "Quản lý tài chính: Hạn mức chi tiêu, Hạng mục, Giao dịch định kỳ, Danh bạ, Báo cáo",
+        "Sao lưu & đồng bộ: Đồng bộ iCloud",
+        "Bảo mật: Khoá bằng Face ID (Pro)",
+        "Giao diện: Hệ thống, Sáng, Tối",
+        "Thông báo: Nhắc ghi chi tiêu, Cảnh báo hạn mức, Nhắc khoản định kỳ",
+        "Hỗ trợ: Câu hỏi thường gặp, Góp ý và hỗ trợ",
+        "Về Milu: Chính sách quyền riêng tư, Điều khoản sử dụng, Giấy phép mã nguồn mở"
+      ],
+      "tabs" : [
+        "Tổng quan: số dư, tài sản ròng, thu chi trong tháng, hạn mức, lịch thu chi, báo cáo",
+        "Tài khoản: tiền mặt, ngân hàng, ví điện tử, thẻ tín dụng, hũ tiết kiệm",
+        "Giao dịch: các khoản thu chi và khoản vay",
+        "Nút + ở thanh dưới: thêm giao dịch (hoặc khoản vay)",
+        "✨ Hỏi Milu ở góc trên bên phải: trợ lý AI, gõ hoặc chạm micro để nói",
+        "Ảnh đại diện ở góc trên bên trái: Cài đặt"
+      ],
+      "topic" : "features"
+    },
+    "privacy" : {
+      "policy" : [
+        "Tóm tắt: Số liệu bạn ghi trong Milu được lưu trên iPhone này và trong iCloud của chính bạn. Chỉ khi bạn hỏi Milu AI hoặc nói bằng giọng, phần dữ liệu cần thiết mới được gửi tới máy chủ riêng của Milu, xử lý xong là bỏ, không lưu lại. Milu không hiện quảng cáo, không dùng công cụ theo dõi hay phân tích, và không bán hay chia sẻ dữ liệu của bạn cho ai.",
+        "Dữ liệu bạn ghi trong Milu: Tài khoản, giao dịch, hũ tiết kiệm, khoản vay, hạng mục và danh bạ được lưu trên iPhone này. Khi iPhone đăng nhập iCloud, chúng được đồng bộ vào iCloud riêng của bạn (do Apple giữ, tính vào dung lượng iCloud của bạn), để các thiết bị dùng chung Apple ID có cùng dữ liệu và dữ liệu tự về khi bạn cài lại app hay đổi máy. Milu không có máy chủ lưu dữ liệu này và không xem được iCloud của bạn. Một vài cài đặt cũng đi theo bạn qua iCloud theo cách đó: hạn mức chi tiêu, tên hiển thị và hình đại diện, các lựa chọn thông báo, cùng lượt AI còn lại. Giao diện, khoá Face ID và lịch sử trò chuyện với Milu AI chỉ lưu trên iPhone này. Nếu bạn bật sao lưu iCloud hoặc sao lưu iPhone vào máy tính, dữ liệu cũng có thể nằm trong bản sao lưu đó, do Apple và bạn quản lý.",
+        "Khi bạn hỏi Milu AI: Để trả lời, app gửi tới máy chủ của Milu câu hỏi của bạn cùng tối đa 6 tin nhắn gần nhất trong cuộc trò chuyện, tên hạng mục và tài khoản, tên hiển thị của bạn (nếu có đặt) và ngày hôm nay. Khi cần số liệu, app tự tra trên máy rồi chỉ gửi đúng phần cần cho câu trả lời, ví dụ một khoản tổng hay các giao dịch khớp câu hỏi kèm ghi chú của chúng. Toàn bộ sổ sách không bao giờ được gửi đi. Dữ liệu đi bằng kết nối mã hoá (HTTPS) qua mạng của Cloudflare tới máy chủ riêng của Milu. AI chạy ngay trên máy chủ đó, không qua dịch vụ AI bên ngoài. Nội dung được xử lý trong bộ nhớ rồi bỏ đi: không lưu, không ghi nhật ký, không dùng để huấn luyện AI. Máy chủ chỉ đếm số lần gọi để chống lạm dụng. Lịch sử trò chuyện với Milu AI được lưu trên iPhone này.",
+        "Khi bạn nói bằng giọng: Đoạn ghi âm được gửi tới máy chủ của Milu, kèm tên hạng mục và tài khoản để nhận đúng chữ, chuyển thành chữ rồi bỏ đi, không lưu lại. Khi không kết nối được máy chủ, iPhone tự nhận giọng bằng công cụ của Apple: ngay trên máy nếu iPhone hỗ trợ, nếu không thì qua máy chủ của Apple, theo chính sách quyền riêng tư của Apple.",
+        "Quyền truy cập trên iPhone: Milu chỉ xin quyền Micro và Nhận dạng giọng nói, và chỉ dùng khi bạn chạm nút micro để nói. Milu không xin quyền vị trí, ảnh hay danh bạ của iPhone. Bạn có thể tắt các quyền này bất cứ lúc nào trong Cài đặt của iPhone.",
+        "Quyền của bạn: Bạn xem, sửa hoặc xoá được từng mục ngay trong app. \"Xoá toàn bộ dữ liệu\" ở cuối Cài đặt xoá mọi số liệu và cài đặt (cả trong iCloud và trên các thiết bị khác của bạn), cùng lịch sử trò chuyện trên máy này. Lượt AI còn lại và các bước Làm quen đã xong vẫn được giữ, trên máy và trong iCloud, để lượt thưởng không bị nhận lại nhiều lần. Xoá app khỏi iPhone chỉ xoá dữ liệu trên máy đó; bản trong iCloud vẫn còn. Bạn có thể xoá hẳn trong Cài đặt của iPhone → tên bạn → iCloud → Quản lý dung lượng.",
+        "Thay đổi chính sách: Khi Milu thêm tính năng mới làm thay đổi cách xử lý dữ liệu, chẳng hạn tài khoản đăng nhập, chính sách này sẽ được cập nhật trước, kèm ngày cập nhật ở cuối trang. Thay đổi quan trọng sẽ được báo trong app.",
+        "Liên hệ: Mọi câu hỏi về quyền riêng tư, bạn gửi thư tới support@milu.nnqlab.dev."
+      ],
+      "topic" : "privacy",
+      "updated" : "15/11/2026",
+      "where" : "Cài đặt → Về Milu → Chính sách quyền riêng tư"
+    },
+    "pro" : {
+      "benefits" : [
+        "Trợ lý AI 150 lượt mỗi tuần (gói miễn phí 10)",
+        "Khoá Milu bằng Face ID",
+        "Xuất báo cáo PDF và Excel (sắp có)"
+      ],
+      "cancel" : "Huỷ bất cứ lúc nào trong Cài đặt của iPhone → Apple ID → Đăng ký; gói tự gia hạn đến khi huỷ.",
+      "now" : {
+        "owned" : false,
+        "plan" : "Miễn phí"
+      },
+      "sale" : [
+        "Milu Pro: Milu Pro chưa mở bán. Khi mở bán, giá, quyền lợi và cách huỷ sẽ được nêu rõ trước khi bạn mua, và việc thanh toán do App Store xử lý theo điều khoản của Apple."
+      ],
+      "topic" : "pro",
+      "where" : "Cài đặt → Nâng cấp Milu Pro (dưới Hạn mức AI). Trên trang đó có Khôi phục và Mã ưu đãi."
+    },
+    "security" : {
+      "lock" : "Khoá bằng Face ID là tính năng Milu Pro: Milu mở sau khi Face ID, Touch ID hoặc mật mã iPhone xác nhận, mỗi lần mở app và khi quay lại sau thời gian chọn ở \"Khoá lại\" (ngay lập tức, sau 1 phút, sau 5 phút). Khi app không ở trước, nội dung được che nên màn chuyển app không lộ số dư. Bật ở Cài đặt → Bảo mật.",
+      "lockNow" : "Đang tắt (cần Milu Pro)",
+      "permissions" : [
+        "Quyền truy cập trên iPhone: Milu chỉ xin quyền Micro và Nhận dạng giọng nói, và chỉ dùng khi bạn chạm nút micro để nói. Milu không xin quyền vị trí, ảnh hay danh bạ của iPhone. Bạn có thể tắt các quyền này bất cứ lúc nào trong Cài đặt của iPhone."
+      ],
+      "topic" : "security"
+    },
+    "support" : {
+      "email" : "support@milu.nnqlab.dev",
+      "topic" : "support",
+      "version" : "Milu 1.0 (12)",
+      "where" : "Cài đặt → Hỗ trợ: Câu hỏi thường gặp, Góp ý và hỗ trợ (gửi thư). Phiên bản ở cuối Cài đặt."
+    },
+    "terms" : {
+      "terms" : [
+        "Đồng ý điều khoản: Khi dùng Milu, bạn đồng ý với các điều khoản dưới đây. Nếu không đồng ý, bạn có thể ngừng dùng và xoá app bất cứ lúc nào.",
+        "Milu là gì: Milu là app giúp bạn tự ghi chép và theo dõi thu chi cá nhân. Milu không phải ngân hàng hay ví điện tử: không giữ tiền, không chuyển tiền, không kết nối với tài khoản ngân hàng của bạn. Mọi con số, biểu đồ và câu trả lời trong Milu chỉ để bạn tham khảo, không phải lời khuyên tài chính, đầu tư, pháp lý hay thuế.",
+        "Dữ liệu của bạn: Bạn tự nhập dữ liệu và chịu trách nhiệm về độ chính xác của nó. Dữ liệu thuộc về bạn; cách Milu lưu và xử lý được nói rõ trong Chính sách quyền riêng tư. Khi iPhone đăng nhập iCloud, dữ liệu được đồng bộ qua iCloud của bạn. Nếu bạn không dùng iCloud, dữ liệu chỉ nằm trên máy: hãy sao lưu iPhone để không mất dữ liệu khi đổi máy, mất máy hay xoá app.",
+        "Milu AI: Milu AI trả lời dựa trên số liệu bạn đã ghi, nhưng AI có thể hiểu sai câu hỏi hoặc trả lời sai. Hãy kiểm tra lại trước khi dựa vào câu trả lời để quyết định. Khi bạn nhờ Milu AI ghi hoặc xoá giao dịch, hãy xem lại kết quả trong app; bạn luôn sửa hoặc xoá được. Không dùng Milu AI cho việc trái pháp luật, để quấy rối, hay cố làm quá tải, dò lỗi hoặc truy cập trái phép máy chủ của Milu.",
+        "Lượt AI: Gói miễn phí có 10 lượt hỏi mỗi tuần, làm mới lúc 0 giờ thứ Hai; lượt không dùng hết không cộng dồn sang tuần sau. Mỗi bước Làm quen với Milu bạn hoàn thành được tặng 5 lượt thưởng một lần, dùng trong 7 ngày và được dùng trước lượt của tuần. Nhờ Milu AI ghi hay xoá giao dịch không tốn lượt. Câu Milu không trả lời được (mất mạng, máy chủ lỗi, bạn bấm dừng) được trả lại lượt. Lượt AI không quy đổi thành tiền và không chuyển cho người khác được. Milu có thể thay đổi số lượt hoặc cách tính lượt và sẽ báo trong app trước khi áp dụng; khi thấy dấu hiệu lạm dụng, Milu có thể tạm giới hạn việc dùng Milu AI.",
+        "Milu Pro: Milu Pro chưa mở bán. Khi mở bán, giá, quyền lợi và cách huỷ sẽ được nêu rõ trước khi bạn mua, và việc thanh toán do App Store xử lý theo điều khoản của Apple.",
+        "Sở hữu trí tuệ: Tên, giao diện, hình ảnh và mã nguồn của Milu thuộc về nhà phát triển Milu. Bạn được dùng app cho mục đích cá nhân, không được sao chép, bán lại hay dịch ngược app. Một số thành phần (biểu tượng, phông chữ, hình emoji) thuộc bên thứ ba và dùng theo giấy phép riêng, liệt kê ở Giấy phép mã nguồn mở.",
+        "Giới hạn trách nhiệm: Milu được cung cấp theo hiện trạng. Nhà phát triển cố gắng để app chạy đúng và ổn định nhưng không cam kết app không bao giờ lỗi hay Milu AI luôn sẵn sàng. Trong phạm vi pháp luật cho phép, nhà phát triển Milu không chịu trách nhiệm về thiệt hại phát sinh từ quyết định bạn đưa ra dựa trên số liệu hoặc câu trả lời trong app, hay từ việc mất dữ liệu trên thiết bị.",
+        "Thay đổi và chấm dứt: Milu có thể cập nhật app và các điều khoản này. Thay đổi quan trọng sẽ được báo trong app; bạn tiếp tục dùng nghĩa là đồng ý với bản mới. Bạn có thể ngừng dùng Milu bất cứ lúc nào bằng cách xoá app.",
+        "Luật áp dụng: Các điều khoản này theo pháp luật Việt Nam.",
+        "Liên hệ: Mọi câu hỏi hay góp ý, bạn gửi thư tới support@milu.nnqlab.dev."
+      ],
+      "topic" : "terms",
+      "updated" : "12/11/2026",
+      "where" : "Cài đặt → Về Milu → Điều khoản sử dụng"
+    }
+  },
   "context" : {
     "accounts" : [
       "Ví tiền mặt",
@@ -257,6 +379,32 @@
         },
         "required" : [
           "ref"
+        ],
+        "type" : "object"
+      }
+    },
+    {
+      "description" : "Thông tin về chính app Milu. BẮT BUỘC gọi cho mọi câu hỏi về app, không tự trả lời theo trí nhớ: lượt hỏi AI (còn bao nhiêu, khi nào có lại, cách tính, hỏi Milu có tốn phí không), Milu Pro (giá, quyền lợi, mua, huỷ), quyền riêng tư (dữ liệu gửi đi đâu, AI có lưu hay đọc dữ liệu không), dữ liệu và iCloud (lưu ở đâu, sao lưu, đổi máy, xoá dữ liệu), khoá Face ID, điều khoản sử dụng, tính năng nằm ở đâu, liên hệ hỗ trợ, phiên bản.",
+      "name" : "get_app_info",
+      "parameters" : {
+        "properties" : {
+          "topic" : {
+            "description" : "ai_quota: lượt hỏi AI, hỏi Milu có mất phí không; pro: gói Milu Pro; privacy: chính sách quyền riêng tư, dữ liệu gửi lên máy chủ, AI; data: dữ liệu lưu ở đâu, iCloud, sao lưu, đổi máy, xoá dữ liệu; security: khoá Face ID, quyền micro; terms: điều khoản sử dụng; features: tính năng và chỗ tìm trong app; support: liên hệ, góp ý, phiên bản",
+            "enum" : [
+              "ai_quota",
+              "pro",
+              "privacy",
+              "data",
+              "security",
+              "terms",
+              "features",
+              "support"
+            ],
+            "type" : "string"
+          }
+        },
+        "required" : [
+          "topic"
         ],
         "type" : "object"
       }

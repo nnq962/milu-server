@@ -12,6 +12,11 @@ Dữ liệu của người dùng ở trên điện thoại. LLM không đọc kh
 rồi gửi lại kết quả, model viết câu trả lời. Thêm khả năng mới = thêm tool trong app
 (`Milu/Features/Assistant/Services/AssistantTools.swift`), không cần sửa máy chủ.
 
+Câu hỏi về chính app (lượt AI, Milu Pro, quyền riêng tư, dữ liệu, Face ID, điều khoản…) đi qua tool
+`get_app_info` của app (`AppInfoTool.swift`): app trả lời bằng đúng chữ trong Chính sách quyền riêng tư,
+Điều khoản, Câu hỏi thường gặp và số lượt thật trên máy. Lời dặn ở `api/server.py` bắt model gọi tool này
+thay vì tự trả lời, và viết câu trả lời ở nhiệt độ thấp (0.3) cho sát chữ của app.
+
 ## API
 
 | | |
@@ -58,3 +63,7 @@ MILU_API_KEY=... python3 eval/run.py --runs 3
 ```
 
 Nên chạy lại mỗi khi sửa lời dặn trong `api/server.py`, đổi model, hoặc thêm tool.
+
+Giới hạn 300 lượt gọi/giờ cho mỗi khoá đếm cả lượt chấm điểm: chạy cả bộ 3 lượt (~240 lượt gọi) bằng
+khoá của app sẽ làm app báo "hỏi nhiều quá" trong giờ đó. Chạy `--runs 2`, rồi `docker compose restart api`
+để xoá bộ đếm (nó chỉ nằm trong bộ nhớ).
