@@ -96,6 +96,8 @@ def date_anchors(today: dt.date) -> str:
         f"- Năm nay: {span(today.replace(month=1, day=1), today.replace(month=12, day=31))}",
         f"- 7 ngày qua: {span(today - dt.timedelta(days=6), today)}",
         f"- 30 ngày qua: {span(today - dt.timedelta(days=29), today)}",
+        # "10 ngày qua" was counted from 11 days back (2026-11-15): said once how N days count.
+        f"- \"N ngày qua\" tính cả hôm nay, bắt đầu từ hôm nay lùi N-1 ngày (10 ngày qua: {span(today - dt.timedelta(days=9), today)})",
     ]
     return "\n".join(lines)
 
