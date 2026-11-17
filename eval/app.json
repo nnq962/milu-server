@@ -61,7 +61,7 @@
       "policy": [
         "Tóm tắt: Số liệu bạn ghi trong Milu được lưu trên iPhone này và trong iCloud của chính bạn. Chỉ khi bạn hỏi Milu AI hoặc nói bằng giọng, phần dữ liệu cần thiết mới được gửi tới máy chủ riêng của Milu, xử lý xong là bỏ, không lưu lại. Milu không hiện quảng cáo, không dùng công cụ theo dõi hay phân tích, và không bán hay chia sẻ dữ liệu của bạn cho ai.",
         "Dữ liệu bạn ghi trong Milu: Tài khoản, giao dịch, hũ tiết kiệm, khoản vay, hạng mục và danh bạ được lưu trên iPhone này. Khi iPhone đăng nhập iCloud, chúng được đồng bộ vào iCloud riêng của bạn (do Apple giữ, tính vào dung lượng iCloud của bạn), để các thiết bị dùng chung Apple ID có cùng dữ liệu và dữ liệu tự về khi bạn cài lại app hay đổi máy. Milu không có máy chủ lưu dữ liệu này và không xem được iCloud của bạn. Một vài cài đặt cũng đi theo bạn qua iCloud theo cách đó: hạn mức chi tiêu, tên hiển thị và hình đại diện, các lựa chọn thông báo, cùng lượt AI còn lại. Giao diện, khoá bằng Face ID và lịch sử trò chuyện với Milu AI chỉ lưu trên iPhone này. Nếu bạn bật sao lưu iCloud hoặc sao lưu iPhone vào máy tính, dữ liệu cũng có thể nằm trong bản sao lưu đó, do Apple và bạn quản lý.",
-        "Khi bạn hỏi Milu AI: Để trả lời, app gửi tới máy chủ của Milu câu hỏi của bạn cùng tối đa 6 tin nhắn gần nhất trong cuộc trò chuyện, tên hạng mục và tài khoản, tên hiển thị của bạn (nếu có đặt) và ngày hôm nay. Khi cần số liệu, app tự tra trên máy rồi chỉ gửi đúng phần cần cho câu trả lời, ví dụ một khoản tổng hay các giao dịch khớp câu hỏi kèm ghi chú của chúng. Toàn bộ sổ sách không bao giờ được gửi đi. Dữ liệu đi bằng kết nối mã hoá (HTTPS) qua mạng của Cloudflare tới máy chủ riêng của Milu. AI chạy ngay trên máy chủ đó, không qua dịch vụ AI bên ngoài. Nội dung được xử lý trong bộ nhớ rồi bỏ đi: không lưu, không ghi nhật ký, không dùng để huấn luyện AI. Máy chủ chỉ đếm số lần gọi để chống lạm dụng. Lịch sử trò chuyện với Milu AI được lưu trên iPhone này.",
+        "Khi bạn hỏi Milu AI: Để trả lời, app gửi tới máy chủ của Milu câu hỏi của bạn cùng tối đa 6 tin nhắn gần nhất trong cuộc trò chuyện, tên hạng mục và tài khoản, tên hiển thị của bạn (nếu có đặt) và ngày hôm nay. Khi cần số liệu, app tự tra trên máy rồi chỉ gửi đúng phần cần cho câu trả lời, ví dụ một khoản tổng hay các giao dịch khớp câu hỏi kèm ghi chú của chúng. Toàn bộ sổ sách không bao giờ được gửi đi. Dữ liệu đi bằng kết nối mã hoá (HTTPS) qua mạng của Cloudflare tới máy chủ riêng của Milu. AI chạy ngay trên máy chủ đó, không qua dịch vụ AI bên ngoài. Nội dung được xử lý trong bộ nhớ rồi bỏ đi: không lưu, không ghi nhật ký, không dùng để huấn luyện AI. Máy chủ chỉ đếm số lần gọi để chống lạm dụng. Lịch sử trò chuyện với Milu AI được lưu trên iPhone này. Đoạn chat không dùng trong 30 ngày (tính từ tin nhắn cuối) sẽ tự xoá; bạn cũng có thể vuốt để xoá từng đoạn trong Lịch sử trò chuyện.",
         "Khi bạn nói bằng giọng: Đoạn ghi âm được gửi tới máy chủ của Milu, kèm tên hạng mục và tài khoản để nhận đúng chữ, chuyển thành chữ rồi bỏ đi, không lưu lại. Trong lúc bạn nói, iPhone cũng nhận giọng bằng công cụ của Apple để chữ hiện ngay, và dùng nó khi không kết nối được máy chủ của Milu: ngay trên máy nếu iPhone hỗ trợ tiếng Việt, nếu không thì qua máy chủ của Apple, theo chính sách quyền riêng tư của Apple.",
         "Quyền truy cập trên iPhone: Micro và Nhận dạng giọng nói: chỉ dùng khi bạn chạm nút micro để nói. Thông báo: để nhắc ghi chi tiêu, báo khoản định kỳ tới hạn và cảnh báo hạn mức. Các thông báo này được hẹn ngay trên iPhone, không đi qua máy chủ nào. Face ID (hoặc mật mã iPhone): khi bạn bật Khoá bằng Face ID. iOS tự kiểm tra, Milu chỉ nhận biết mở được hay không, không bao giờ thấy hay gửi đi khuôn mặt, vân tay hay mật mã của bạn. Milu không xin quyền vị trí, ảnh hay danh bạ của iPhone. Bạn có thể tắt các quyền trên bất cứ lúc nào trong Cài đặt của iPhone.",
         "Quyền của bạn: Bạn xem, sửa hoặc xoá được từng mục ngay trong app. \"Xoá toàn bộ dữ liệu\" ở cuối Cài đặt xoá mọi số liệu và cài đặt (cả trong iCloud và trên các thiết bị khác của bạn), cùng lịch sử trò chuyện trên máy này. Lượt AI còn lại và các bước Làm quen đã xong vẫn được giữ, trên máy và trong iCloud, để lượt thưởng không bị nhận lại nhiều lần. Xoá app khỏi iPhone chỉ xoá dữ liệu trên máy đó; bản trong iCloud vẫn còn. Bạn có thể xoá hẳn trong Cài đặt của iPhone → tên bạn → iCloud → Quản lý dung lượng.",
@@ -69,7 +69,7 @@
         "Liên hệ: Mọi câu hỏi về quyền riêng tư, bạn gửi thư tới support@milu.nnqlab.dev."
       ],
       "topic": "privacy",
-      "updated": "16/11/2026",
+      "updated": "17/11/2026",
       "where": "Cài đặt → Về Milu → Chính sách quyền riêng tư"
     },
     "pro": {
@@ -202,7 +202,7 @@
   },
   "record": {
     "draft": {
-      "card": "746b",
+      "card": "e2be",
       "ok": true,
       "rows": [
         {
@@ -214,7 +214,7 @@
           "date": "2026-11-17",
           "kind": "expense",
           "row": 1,
-          "time": "11:00"
+          "time": "16:34"
         }
       ],
       "say": "Đã soạn thẻ, CHƯA ghi gì. Nói ngắn gọn: người dùng kiểm tra thẻ rồi bấm Lưu; không nói đã ghi, không nói mã thẻ.",
@@ -235,13 +235,13 @@
     "rejected": {
       "items": [
         {
-          "howTo": "Ghi tay: nút + → Thêm giao dịch → Chuyển khoản.",
+          "howTo": "Nút + → Thêm giao dịch → Chuyển khoản.",
           "index": 1,
-          "reason": "Đây là chuyển tiền giữa hai tài khoản của bạn, không phải khoản chi hay thu, nên Milu chưa ghi."
+          "reason": "Milu chưa ghi được chuyển tiền giữa các tài khoản (chuyển khoản, rút tiền, nạp ví): tính năng này chưa có."
         }
       ],
       "ok": false,
-      "say": "Không ghi gì, không soạn thẻ. Nói lý do (reason) rồi chép nguyên văn cách ghi tay (howTo), ngắn gọn.",
+      "say": "Không ghi gì, không soạn thẻ. Nói thật là Milu chưa làm được (reason), rồi chép nguyên văn cách ghi tay (howTo); không hỏi thêm gì.",
       "status": "rejected"
     }
   },
@@ -482,7 +482,7 @@
       }
     },
     {
-      "description": "Soạn thẻ ghi khoản chi hoặc thu để người dùng kiểm tra rồi bấm Lưu; công cụ này CHƯA ghi gì. Gọi ngay khi người dùng muốn ghi, thêm một khoản (\"ghi ăn trưa 60k\", \"nhận lương 25 triệu\"), kể cả khi còn thiếu thông tin, và gửi mọi khoản của câu trong một lần. Kết quả: needsInfo thì hỏi lại đúng câu `ask` (kèm gợi ý), rồi gọi lại với đủ các khoản; rejected thì nói `reason` và `howTo`; draft thì nói ngắn là người dùng kiểm tra thẻ rồi bấm Lưu, không bao giờ nói đã ghi. Sửa thẻ đang chờ thì gửi lại đủ các khoản của thẻ kèm `replaces`.",
+      "description": "Soạn thẻ ghi khoản chi hoặc thu để người dùng kiểm tra rồi bấm Lưu; công cụ này CHƯA ghi gì. Gọi ngay khi người dùng muốn ghi, thêm một khoản (\"ghi ăn trưa 60k\", \"nhận lương 25 triệu\"), kể cả khi còn thiếu thông tin, và gửi mọi khoản của câu trong một lần. Kết quả: needsInfo thì hỏi lại đúng câu `ask` (kèm gợi ý), rồi gọi lại với đủ các khoản; rejected thì nói `reason` và `howTo`; draft thì nói ngắn là người dùng kiểm tra thẻ rồi bấm Lưu, không bao giờ nói đã ghi. Sửa thẻ đang chờ thì gửi lại đủ các khoản của thẻ kèm `replaces`. Chuyển khoản, rút tiền, nạp ví, vay, trả nợ, hũ: Milu chưa ghi được, vẫn gọi ngay với kind transfer, loan hay goal, không hỏi thêm tài khoản hay người nào.",
       "name": "record_transaction",
       "parameters": {
         "properties": {
