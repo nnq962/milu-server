@@ -1,42 +1,42 @@
 {
-  "appInfo" : {
-    "ai_quota" : {
-      "now" : {
-        "bonusExpires" : "thứ Năm 19/11 lúc 14:30",
-        "bonusLeft" : 5,
-        "plan" : "Miễn phí",
-        "totalLeft" : 8,
-        "weekRenews" : "0 giờ thứ Hai 16/11",
-        "weeklyAllowance" : 10,
-        "weeklyLeft" : 3
+  "appInfo": {
+    "ai_quota": {
+      "now": {
+        "bonusExpires": "thứ Năm 19/11 lúc 14:30",
+        "bonusLeft": 5,
+        "plan": "Miễn phí",
+        "totalLeft": 8,
+        "weekRenews": "0 giờ thứ Hai 16/11",
+        "weeklyAllowance": 10,
+        "weeklyLeft": 3
       },
-      "rules" : [
+      "rules": [
         "Lượt AI: Gói miễn phí có 10 lượt hỏi mỗi tuần, làm mới lúc 0 giờ thứ Hai; lượt không dùng hết không cộng dồn sang tuần sau. Mỗi bước Làm quen với Milu bạn hoàn thành được tặng 5 lượt thưởng một lần, dùng trong 7 ngày và được dùng trước lượt của tuần. Nhờ Milu AI ghi hay xoá giao dịch không tốn lượt. Câu Milu không trả lời được (mất mạng, máy chủ lỗi, bạn bấm dừng) được trả lại lượt. Lượt AI không quy đổi thành tiền và không chuyển cho người khác được. Milu có thể thay đổi số lượt hoặc cách tính lượt và sẽ báo trong app trước khi áp dụng; khi thấy dấu hiệu lạm dụng, Milu có thể tạm giới hạn việc dùng Milu AI.",
         "Milu Pro có 150 lượt mỗi tuần thay cho 10.",
         "Hỏi Milu về chính app (lượt AI, Milu Pro, quyền riêng tư…) cũng không tốn lượt."
       ],
-      "say" : "Bạn còn 8 lượt hỏi: 3 lượt của tuần (làm mới lúc 0 giờ thứ Hai 16/11) và 5 lượt thưởng (hết hạn thứ Năm 19/11 lúc 14:30).",
-      "topic" : "ai_quota",
-      "where" : "Cài đặt → Hạn mức AI. Mở Cài đặt bằng ảnh đại diện ở góc trên bên trái."
+      "say": "Bạn còn 8 lượt hỏi: 3 lượt của tuần (làm mới lúc 0 giờ thứ Hai 16/11) và 5 lượt thưởng (hết hạn thứ Năm 19/11 lúc 14:30).",
+      "topic": "ai_quota",
+      "where": "Cài đặt → Hạn mức AI. Mở Cài đặt bằng ảnh đại diện ở góc trên bên trái."
     },
-    "data" : {
-      "eraseAll" : "Xoá hết trong app: Cài đặt → kéo xuống cuối → \"Xoá toàn bộ dữ liệu\" (hỏi lại hai lần). Xoá cả trong iCloud và trên các thiết bị khác dùng chung Apple ID, không lấy lại được.",
-      "facts" : [
-        "Dữ liệu bạn ghi trong Milu: Tài khoản, giao dịch, hũ tiết kiệm, khoản vay, hạng mục và danh bạ được lưu trên iPhone này. Khi iPhone đăng nhập iCloud, chúng được đồng bộ vào iCloud riêng của bạn (do Apple giữ, tính vào dung lượng iCloud của bạn), để các thiết bị dùng chung Apple ID có cùng dữ liệu và dữ liệu tự về khi bạn cài lại app hay đổi máy. Milu không có máy chủ lưu dữ liệu này và không xem được iCloud của bạn. Một vài cài đặt cũng đi theo bạn qua iCloud theo cách đó: hạn mức chi tiêu, tên hiển thị và hình đại diện, các lựa chọn thông báo, cùng lượt AI còn lại. Giao diện, khoá Face ID và lịch sử trò chuyện với Milu AI chỉ lưu trên iPhone này. Nếu bạn bật sao lưu iCloud hoặc sao lưu iPhone vào máy tính, dữ liệu cũng có thể nằm trong bản sao lưu đó, do Apple và bạn quản lý.",
+    "data": {
+      "eraseAll": "Xoá hết trong app: Cài đặt → kéo xuống cuối → \"Xoá toàn bộ dữ liệu\" (hỏi lại hai lần). Xoá cả trong iCloud và trên các thiết bị khác dùng chung Apple ID, không lấy lại được.",
+      "facts": [
+        "Dữ liệu bạn ghi trong Milu: Tài khoản, giao dịch, hũ tiết kiệm, khoản vay, hạng mục và danh bạ được lưu trên iPhone này. Khi iPhone đăng nhập iCloud, chúng được đồng bộ vào iCloud riêng của bạn (do Apple giữ, tính vào dung lượng iCloud của bạn), để các thiết bị dùng chung Apple ID có cùng dữ liệu và dữ liệu tự về khi bạn cài lại app hay đổi máy. Milu không có máy chủ lưu dữ liệu này và không xem được iCloud của bạn. Một vài cài đặt cũng đi theo bạn qua iCloud theo cách đó: hạn mức chi tiêu, tên hiển thị và hình đại diện, các lựa chọn thông báo, cùng lượt AI còn lại. Giao diện, khoá bằng Face ID và lịch sử trò chuyện với Milu AI chỉ lưu trên iPhone này. Nếu bạn bật sao lưu iCloud hoặc sao lưu iPhone vào máy tính, dữ liệu cũng có thể nằm trong bản sao lưu đó, do Apple và bạn quản lý.",
         "Quyền của bạn: Bạn xem, sửa hoặc xoá được từng mục ngay trong app. \"Xoá toàn bộ dữ liệu\" ở cuối Cài đặt xoá mọi số liệu và cài đặt (cả trong iCloud và trên các thiết bị khác của bạn), cùng lịch sử trò chuyện trên máy này. Lượt AI còn lại và các bước Làm quen đã xong vẫn được giữ, trên máy và trong iCloud, để lượt thưởng không bị nhận lại nhiều lần. Xoá app khỏi iPhone chỉ xoá dữ liệu trên máy đó; bản trong iCloud vẫn còn. Bạn có thể xoá hẳn trong Cài đặt của iPhone → tên bạn → iCloud → Quản lý dung lượng."
       ],
-      "iCloudNow" : "iCloud đang bật: dữ liệu được đồng bộ vào iCloud của bạn",
-      "topic" : "data",
-      "where" : "Trạng thái đồng bộ: Cài đặt → Sao lưu & đồng bộ → Đồng bộ iCloud."
+      "iCloudNow": "iCloud đang bật: dữ liệu được đồng bộ vào iCloud của bạn",
+      "topic": "data",
+      "where": "Trạng thái đồng bộ: Cài đặt → Sao lưu & đồng bộ → Đồng bộ iCloud."
     },
-    "features" : {
-      "faq" : [
+    "features": {
+      "faq": [
         "Dữ liệu của tôi lưu ở đâu?: Trên máy này, và trong iCloud của bạn khi iPhone đăng nhập iCloud: xoá app rồi cài lại, hay đổi máy cùng Apple ID, dữ liệu tự về. Milu không có máy chủ lưu dữ liệu và không xem được iCloud của bạn.",
         "Hạn mức chi tiêu tính thế nào?: Cộng mọi khoản chi trong tháng, cả phí chuyển khoản và lãi vay; không tính các khoản bạn đánh dấu không tính vào báo cáo và các tài khoản đang khoá. Đặt ở Cài đặt → Hạn mức chi tiêu.",
         "Lượt AI là gì?: Mỗi câu hỏi gửi Milu AI dùng một lượt; nhờ Milu ghi hay xoá giao dịch, hay hỏi về chính Milu (lượt AI, Milu Pro, quyền riêng tư), thì không tốn lượt, và câu Milu không trả lời được (mất mạng, bấm dừng) được trả lại lượt. Mỗi tuần có 10 lượt miễn phí, làm mới lúc 0 giờ thứ Hai. Mỗi bước Làm quen với Milu bạn làm xong được thêm 5 lượt thưởng, dùng trong 7 ngày.",
         "Chuyển tiền giữa các tài khoản có tính là chi không?: Không. Chỉ phí chuyển khoản (nếu có) được tính là chi."
       ],
-      "settings" : [
+      "settings": [
         "Hạn mức AI, Nâng cấp Milu Pro",
         "Quản lý tài chính: Hạn mức chi tiêu, Hạng mục, Giao dịch định kỳ, Danh bạ, Báo cáo",
         "Sao lưu & đồng bộ: Đồng bộ iCloud",
@@ -46,90 +46,91 @@
         "Hỗ trợ: Câu hỏi thường gặp, Góp ý và hỗ trợ",
         "Về Milu: Chính sách quyền riêng tư, Điều khoản sử dụng, Giấy phép mã nguồn mở"
       ],
-      "tabs" : [
+      "tabs": [
         "Tổng quan: số dư, tài sản ròng, thu chi trong tháng, hạn mức, lịch thu chi, báo cáo",
-        "Tài khoản: tiền mặt, ngân hàng, ví điện tử, thẻ tín dụng, hũ tiết kiệm",
+        "Tài khoản: tiền mặt, ngân hàng, ví điện tử, hũ tiết kiệm (thẻ tín dụng thì thêm như tài khoản ngân hàng, số dư âm)",
         "Giao dịch: các khoản thu chi và khoản vay",
-        "Nút + ở thanh dưới: thêm giao dịch (hoặc khoản vay)",
+        "Nút + ở thanh dưới: chọn Thêm giao dịch, Thêm khoản vay (Thêm bằng AI sắp có)",
         "✨ Hỏi Milu ở góc trên bên phải: trợ lý AI, gõ hoặc chạm micro để nói",
+        "Nhờ Hỏi Milu ghi khoản chi, thu: Milu soạn thẻ, người dùng kiểm tra rồi bấm Lưu mới ghi; chưa ghi chuyển khoản, khoản vay, hũ",
         "Ảnh đại diện ở góc trên bên trái: Cài đặt"
       ],
-      "topic" : "features"
+      "topic": "features"
     },
-    "privacy" : {
-      "policy" : [
+    "privacy": {
+      "policy": [
         "Tóm tắt: Số liệu bạn ghi trong Milu được lưu trên iPhone này và trong iCloud của chính bạn. Chỉ khi bạn hỏi Milu AI hoặc nói bằng giọng, phần dữ liệu cần thiết mới được gửi tới máy chủ riêng của Milu, xử lý xong là bỏ, không lưu lại. Milu không hiện quảng cáo, không dùng công cụ theo dõi hay phân tích, và không bán hay chia sẻ dữ liệu của bạn cho ai.",
-        "Dữ liệu bạn ghi trong Milu: Tài khoản, giao dịch, hũ tiết kiệm, khoản vay, hạng mục và danh bạ được lưu trên iPhone này. Khi iPhone đăng nhập iCloud, chúng được đồng bộ vào iCloud riêng của bạn (do Apple giữ, tính vào dung lượng iCloud của bạn), để các thiết bị dùng chung Apple ID có cùng dữ liệu và dữ liệu tự về khi bạn cài lại app hay đổi máy. Milu không có máy chủ lưu dữ liệu này và không xem được iCloud của bạn. Một vài cài đặt cũng đi theo bạn qua iCloud theo cách đó: hạn mức chi tiêu, tên hiển thị và hình đại diện, các lựa chọn thông báo, cùng lượt AI còn lại. Giao diện, khoá Face ID và lịch sử trò chuyện với Milu AI chỉ lưu trên iPhone này. Nếu bạn bật sao lưu iCloud hoặc sao lưu iPhone vào máy tính, dữ liệu cũng có thể nằm trong bản sao lưu đó, do Apple và bạn quản lý.",
+        "Dữ liệu bạn ghi trong Milu: Tài khoản, giao dịch, hũ tiết kiệm, khoản vay, hạng mục và danh bạ được lưu trên iPhone này. Khi iPhone đăng nhập iCloud, chúng được đồng bộ vào iCloud riêng của bạn (do Apple giữ, tính vào dung lượng iCloud của bạn), để các thiết bị dùng chung Apple ID có cùng dữ liệu và dữ liệu tự về khi bạn cài lại app hay đổi máy. Milu không có máy chủ lưu dữ liệu này và không xem được iCloud của bạn. Một vài cài đặt cũng đi theo bạn qua iCloud theo cách đó: hạn mức chi tiêu, tên hiển thị và hình đại diện, các lựa chọn thông báo, cùng lượt AI còn lại. Giao diện, khoá bằng Face ID và lịch sử trò chuyện với Milu AI chỉ lưu trên iPhone này. Nếu bạn bật sao lưu iCloud hoặc sao lưu iPhone vào máy tính, dữ liệu cũng có thể nằm trong bản sao lưu đó, do Apple và bạn quản lý.",
         "Khi bạn hỏi Milu AI: Để trả lời, app gửi tới máy chủ của Milu câu hỏi của bạn cùng tối đa 6 tin nhắn gần nhất trong cuộc trò chuyện, tên hạng mục và tài khoản, tên hiển thị của bạn (nếu có đặt) và ngày hôm nay. Khi cần số liệu, app tự tra trên máy rồi chỉ gửi đúng phần cần cho câu trả lời, ví dụ một khoản tổng hay các giao dịch khớp câu hỏi kèm ghi chú của chúng. Toàn bộ sổ sách không bao giờ được gửi đi. Dữ liệu đi bằng kết nối mã hoá (HTTPS) qua mạng của Cloudflare tới máy chủ riêng của Milu. AI chạy ngay trên máy chủ đó, không qua dịch vụ AI bên ngoài. Nội dung được xử lý trong bộ nhớ rồi bỏ đi: không lưu, không ghi nhật ký, không dùng để huấn luyện AI. Máy chủ chỉ đếm số lần gọi để chống lạm dụng. Lịch sử trò chuyện với Milu AI được lưu trên iPhone này.",
-        "Khi bạn nói bằng giọng: Đoạn ghi âm được gửi tới máy chủ của Milu, kèm tên hạng mục và tài khoản để nhận đúng chữ, chuyển thành chữ rồi bỏ đi, không lưu lại. Khi không kết nối được máy chủ, iPhone tự nhận giọng bằng công cụ của Apple: ngay trên máy nếu iPhone hỗ trợ, nếu không thì qua máy chủ của Apple, theo chính sách quyền riêng tư của Apple.",
-        "Quyền truy cập trên iPhone: Milu chỉ xin quyền Micro và Nhận dạng giọng nói, và chỉ dùng khi bạn chạm nút micro để nói. Milu không xin quyền vị trí, ảnh hay danh bạ của iPhone. Bạn có thể tắt các quyền này bất cứ lúc nào trong Cài đặt của iPhone.",
+        "Khi bạn nói bằng giọng: Đoạn ghi âm được gửi tới máy chủ của Milu, kèm tên hạng mục và tài khoản để nhận đúng chữ, chuyển thành chữ rồi bỏ đi, không lưu lại. Trong lúc bạn nói, iPhone cũng nhận giọng bằng công cụ của Apple để chữ hiện ngay, và dùng nó khi không kết nối được máy chủ của Milu: ngay trên máy nếu iPhone hỗ trợ tiếng Việt, nếu không thì qua máy chủ của Apple, theo chính sách quyền riêng tư của Apple.",
+        "Quyền truy cập trên iPhone: Micro và Nhận dạng giọng nói: chỉ dùng khi bạn chạm nút micro để nói. Thông báo: để nhắc ghi chi tiêu, báo khoản định kỳ tới hạn và cảnh báo hạn mức. Các thông báo này được hẹn ngay trên iPhone, không đi qua máy chủ nào. Face ID (hoặc mật mã iPhone): khi bạn bật Khoá bằng Face ID. iOS tự kiểm tra, Milu chỉ nhận biết mở được hay không, không bao giờ thấy hay gửi đi khuôn mặt, vân tay hay mật mã của bạn. Milu không xin quyền vị trí, ảnh hay danh bạ của iPhone. Bạn có thể tắt các quyền trên bất cứ lúc nào trong Cài đặt của iPhone.",
         "Quyền của bạn: Bạn xem, sửa hoặc xoá được từng mục ngay trong app. \"Xoá toàn bộ dữ liệu\" ở cuối Cài đặt xoá mọi số liệu và cài đặt (cả trong iCloud và trên các thiết bị khác của bạn), cùng lịch sử trò chuyện trên máy này. Lượt AI còn lại và các bước Làm quen đã xong vẫn được giữ, trên máy và trong iCloud, để lượt thưởng không bị nhận lại nhiều lần. Xoá app khỏi iPhone chỉ xoá dữ liệu trên máy đó; bản trong iCloud vẫn còn. Bạn có thể xoá hẳn trong Cài đặt của iPhone → tên bạn → iCloud → Quản lý dung lượng.",
         "Thay đổi chính sách: Khi Milu thêm tính năng mới làm thay đổi cách xử lý dữ liệu, chẳng hạn tài khoản đăng nhập, chính sách này sẽ được cập nhật trước, kèm ngày cập nhật ở cuối trang. Thay đổi quan trọng sẽ được báo trong app.",
         "Liên hệ: Mọi câu hỏi về quyền riêng tư, bạn gửi thư tới support@milu.nnqlab.dev."
       ],
-      "topic" : "privacy",
-      "updated" : "15/11/2026",
-      "where" : "Cài đặt → Về Milu → Chính sách quyền riêng tư"
+      "topic": "privacy",
+      "updated": "16/11/2026",
+      "where": "Cài đặt → Về Milu → Chính sách quyền riêng tư"
     },
-    "pro" : {
-      "benefits" : [
+    "pro": {
+      "benefits": [
         "Trợ lý AI 150 lượt mỗi tuần (gói miễn phí 10)",
         "Khoá Milu bằng Face ID",
         "Xuất báo cáo PDF và Excel (sắp có)"
       ],
-      "cancel" : "Huỷ bất cứ lúc nào trong Cài đặt của iPhone → Apple ID → Đăng ký; gói tự gia hạn đến khi huỷ.",
-      "now" : {
-        "owned" : false,
-        "plan" : "Miễn phí"
+      "cancel": "Huỷ bất cứ lúc nào trong Cài đặt của iPhone → Apple ID → Đăng ký; gói tự gia hạn đến khi huỷ.",
+      "now": {
+        "owned": false,
+        "plan": "Miễn phí"
       },
-      "sale" : [
-        "Milu Pro: Milu Pro chưa mở bán. Khi mở bán, giá, quyền lợi và cách huỷ sẽ được nêu rõ trước khi bạn mua, và việc thanh toán do App Store xử lý theo điều khoản của Apple."
+      "sale": [
+        "Milu Pro: Milu Pro là gói đăng ký theo tháng hoặc theo năm, mua qua App Store. Giá và quyền lợi của từng gói hiện trên màn Milu Pro trước khi bạn mua; việc thanh toán do App Store xử lý theo điều khoản của Apple và được trừ vào Apple ID khi bạn xác nhận mua. Gói tự gia hạn khi hết kỳ, trừ khi bạn huỷ ít nhất 24 giờ trước khi kỳ hiện tại kết thúc. Bạn quản lý hoặc huỷ gói bất cứ lúc nào trong Cài đặt › Apple ID › Đăng ký; huỷ thì vẫn dùng Milu Pro tới hết kỳ đã trả. Khi Milu Pro hết hạn, dữ liệu của bạn vẫn giữ nguyên; thêm lượt Milu AI ngừng lại. Khoá bằng Face ID đang bật vẫn giữ cho tới khi bạn tắt; tắt rồi thì cần Pro để bật lại."
       ],
-      "topic" : "pro",
-      "where" : "Cài đặt → Nâng cấp Milu Pro (dưới Hạn mức AI). Trên trang đó có Khôi phục và Mã ưu đãi."
+      "topic": "pro",
+      "where": "Cài đặt → Nâng cấp Milu Pro (dưới Hạn mức AI). Trên trang đó có Khôi phục và Mã ưu đãi."
     },
-    "security" : {
-      "lock" : "Khoá bằng Face ID là tính năng Milu Pro: Milu mở sau khi Face ID, Touch ID hoặc mật mã iPhone xác nhận, mỗi lần mở app và khi quay lại sau thời gian chọn ở \"Khoá lại\" (ngay lập tức, sau 1 phút, sau 5 phút). Khi app không ở trước, nội dung được che nên màn chuyển app không lộ số dư. Bật ở Cài đặt → Bảo mật.",
-      "lockNow" : "Đang tắt (cần Milu Pro)",
-      "permissions" : [
-        "Quyền truy cập trên iPhone: Milu chỉ xin quyền Micro và Nhận dạng giọng nói, và chỉ dùng khi bạn chạm nút micro để nói. Milu không xin quyền vị trí, ảnh hay danh bạ của iPhone. Bạn có thể tắt các quyền này bất cứ lúc nào trong Cài đặt của iPhone."
+    "security": {
+      "lock": "Khoá bằng Face ID là tính năng Milu Pro: Milu mở sau khi Face ID hoặc mật mã iPhone xác nhận, mỗi lần mở app và khi quay lại sau thời gian chọn ở \"Khoá lại\" (ngay lập tức, sau 1 phút, sau 5 phút). Khi app không ở trước, nội dung được che nên màn chuyển app không lộ số dư. Bật ở Cài đặt → Bảo mật.",
+      "lockNow": "Đang tắt (cần Milu Pro để bật)",
+      "permissions": [
+        "Quyền truy cập trên iPhone: Micro và Nhận dạng giọng nói: chỉ dùng khi bạn chạm nút micro để nói. Thông báo: để nhắc ghi chi tiêu, báo khoản định kỳ tới hạn và cảnh báo hạn mức. Các thông báo này được hẹn ngay trên iPhone, không đi qua máy chủ nào. Face ID (hoặc mật mã iPhone): khi bạn bật Khoá bằng Face ID. iOS tự kiểm tra, Milu chỉ nhận biết mở được hay không, không bao giờ thấy hay gửi đi khuôn mặt, vân tay hay mật mã của bạn. Milu không xin quyền vị trí, ảnh hay danh bạ của iPhone. Bạn có thể tắt các quyền trên bất cứ lúc nào trong Cài đặt của iPhone."
       ],
-      "topic" : "security"
+      "topic": "security"
     },
-    "support" : {
-      "email" : "support@milu.nnqlab.dev",
-      "topic" : "support",
-      "version" : "Milu 1.0 (12)",
-      "where" : "Cài đặt → Hỗ trợ: Câu hỏi thường gặp, Góp ý và hỗ trợ (gửi thư). Phiên bản ở cuối Cài đặt."
+    "support": {
+      "email": "support@milu.nnqlab.dev",
+      "topic": "support",
+      "version": "Milu 1.0 (12)",
+      "where": "Cài đặt → Hỗ trợ: Câu hỏi thường gặp, Góp ý và hỗ trợ (gửi thư). Phiên bản ở cuối Cài đặt."
     },
-    "terms" : {
-      "terms" : [
+    "terms": {
+      "terms": [
         "Đồng ý điều khoản: Khi dùng Milu, bạn đồng ý với các điều khoản dưới đây. Nếu không đồng ý, bạn có thể ngừng dùng và xoá app bất cứ lúc nào.",
         "Milu là gì: Milu là app giúp bạn tự ghi chép và theo dõi thu chi cá nhân. Milu không phải ngân hàng hay ví điện tử: không giữ tiền, không chuyển tiền, không kết nối với tài khoản ngân hàng của bạn. Mọi con số, biểu đồ và câu trả lời trong Milu chỉ để bạn tham khảo, không phải lời khuyên tài chính, đầu tư, pháp lý hay thuế.",
         "Dữ liệu của bạn: Bạn tự nhập dữ liệu và chịu trách nhiệm về độ chính xác của nó. Dữ liệu thuộc về bạn; cách Milu lưu và xử lý được nói rõ trong Chính sách quyền riêng tư. Khi iPhone đăng nhập iCloud, dữ liệu được đồng bộ qua iCloud của bạn. Nếu bạn không dùng iCloud, dữ liệu chỉ nằm trên máy: hãy sao lưu iPhone để không mất dữ liệu khi đổi máy, mất máy hay xoá app.",
         "Milu AI: Milu AI trả lời dựa trên số liệu bạn đã ghi, nhưng AI có thể hiểu sai câu hỏi hoặc trả lời sai. Hãy kiểm tra lại trước khi dựa vào câu trả lời để quyết định. Khi bạn nhờ Milu AI ghi hoặc xoá giao dịch, hãy xem lại kết quả trong app; bạn luôn sửa hoặc xoá được. Không dùng Milu AI cho việc trái pháp luật, để quấy rối, hay cố làm quá tải, dò lỗi hoặc truy cập trái phép máy chủ của Milu.",
         "Lượt AI: Gói miễn phí có 10 lượt hỏi mỗi tuần, làm mới lúc 0 giờ thứ Hai; lượt không dùng hết không cộng dồn sang tuần sau. Mỗi bước Làm quen với Milu bạn hoàn thành được tặng 5 lượt thưởng một lần, dùng trong 7 ngày và được dùng trước lượt của tuần. Nhờ Milu AI ghi hay xoá giao dịch không tốn lượt. Câu Milu không trả lời được (mất mạng, máy chủ lỗi, bạn bấm dừng) được trả lại lượt. Lượt AI không quy đổi thành tiền và không chuyển cho người khác được. Milu có thể thay đổi số lượt hoặc cách tính lượt và sẽ báo trong app trước khi áp dụng; khi thấy dấu hiệu lạm dụng, Milu có thể tạm giới hạn việc dùng Milu AI.",
-        "Milu Pro: Milu Pro chưa mở bán. Khi mở bán, giá, quyền lợi và cách huỷ sẽ được nêu rõ trước khi bạn mua, và việc thanh toán do App Store xử lý theo điều khoản của Apple.",
+        "Milu Pro: Milu Pro là gói đăng ký theo tháng hoặc theo năm, mua qua App Store. Giá và quyền lợi của từng gói hiện trên màn Milu Pro trước khi bạn mua; việc thanh toán do App Store xử lý theo điều khoản của Apple và được trừ vào Apple ID khi bạn xác nhận mua. Gói tự gia hạn khi hết kỳ, trừ khi bạn huỷ ít nhất 24 giờ trước khi kỳ hiện tại kết thúc. Bạn quản lý hoặc huỷ gói bất cứ lúc nào trong Cài đặt › Apple ID › Đăng ký; huỷ thì vẫn dùng Milu Pro tới hết kỳ đã trả. Khi Milu Pro hết hạn, dữ liệu của bạn vẫn giữ nguyên; thêm lượt Milu AI ngừng lại. Khoá bằng Face ID đang bật vẫn giữ cho tới khi bạn tắt; tắt rồi thì cần Pro để bật lại.",
         "Sở hữu trí tuệ: Tên, giao diện, hình ảnh và mã nguồn của Milu thuộc về nhà phát triển Milu. Bạn được dùng app cho mục đích cá nhân, không được sao chép, bán lại hay dịch ngược app. Một số thành phần (biểu tượng, phông chữ, hình emoji) thuộc bên thứ ba và dùng theo giấy phép riêng, liệt kê ở Giấy phép mã nguồn mở.",
         "Giới hạn trách nhiệm: Milu được cung cấp theo hiện trạng. Nhà phát triển cố gắng để app chạy đúng và ổn định nhưng không cam kết app không bao giờ lỗi hay Milu AI luôn sẵn sàng. Trong phạm vi pháp luật cho phép, nhà phát triển Milu không chịu trách nhiệm về thiệt hại phát sinh từ quyết định bạn đưa ra dựa trên số liệu hoặc câu trả lời trong app, hay từ việc mất dữ liệu trên thiết bị.",
         "Thay đổi và chấm dứt: Milu có thể cập nhật app và các điều khoản này. Thay đổi quan trọng sẽ được báo trong app; bạn tiếp tục dùng nghĩa là đồng ý với bản mới. Bạn có thể ngừng dùng Milu bất cứ lúc nào bằng cách xoá app.",
         "Luật áp dụng: Các điều khoản này theo pháp luật Việt Nam.",
         "Liên hệ: Mọi câu hỏi hay góp ý, bạn gửi thư tới support@milu.nnqlab.dev."
       ],
-      "topic" : "terms",
-      "updated" : "12/11/2026",
-      "where" : "Cài đặt → Về Milu → Điều khoản sử dụng"
+      "topic": "terms",
+      "updated": "16/11/2026",
+      "where": "Cài đặt → Về Milu → Điều khoản sử dụng"
     }
   },
-  "context" : {
-    "accounts" : [
+  "context": {
+    "accounts": [
       "Ví tiền mặt",
       "Vietcombank",
       "Techcombank",
       "MoMo",
       "Thẻ VPBank Visa"
     ],
-    "expenseCategories" : [
+    "expenseCategories": [
       "Ăn uống",
       "Ăn sáng",
       "Ăn trưa",
@@ -182,7 +183,7 @@
       "Chi khác",
       "Khác"
     ],
-    "incomeCategories" : [
+    "incomeCategories": [
       "Lương",
       "Lương chính",
       "Làm thêm",
@@ -197,310 +198,391 @@
       "Hoàn tiền",
       "Khác"
     ],
-    "today" : "2026-11-12"
+    "today": "2026-11-12"
   },
-  "tools" : [
+  "record": {
+    "draft": {
+      "card": "746b",
+      "ok": true,
+      "rows": [
+        {
+          "account": "Ví tiền mặt",
+          "accountChosenByApp": true,
+          "amount": 60000,
+          "amountText": "60.000đ",
+          "category": "Ăn trưa",
+          "date": "2026-11-17",
+          "kind": "expense",
+          "row": 1,
+          "time": "11:00"
+        }
+      ],
+      "say": "Đã soạn thẻ, CHƯA ghi gì. Nói ngắn gọn: người dùng kiểm tra thẻ rồi bấm Lưu; không nói đã ghi, không nói mã thẻ.",
+      "status": "draft"
+    },
+    "needsInfo": {
+      "items": [
+        {
+          "ask": "Khoản “Ăn trưa” bao nhiêu tiền?",
+          "index": 1,
+          "missing": "amount"
+        }
+      ],
+      "ok": true,
+      "say": "Chưa soạn thẻ, chưa ghi gì. Hỏi người dùng đúng câu ask của từng khoản (kèm gợi ý nếu có), rồi gọi lại với đủ mọi khoản.",
+      "status": "needsInfo"
+    },
+    "rejected": {
+      "items": [
+        {
+          "howTo": "Ghi tay: nút + → Thêm giao dịch → Chuyển khoản.",
+          "index": 1,
+          "reason": "Đây là chuyển tiền giữa hai tài khoản của bạn, không phải khoản chi hay thu, nên Milu chưa ghi."
+        }
+      ],
+      "ok": false,
+      "say": "Không ghi gì, không soạn thẻ. Nói lý do (reason) rồi chép nguyên văn cách ghi tay (howTo), ngắn gọn.",
+      "status": "rejected"
+    }
+  },
+  "tools": [
     {
-      "description" : "Tính tổng chi tiêu hoặc thu nhập trong một khoảng ngày, kèm số giao dịch và phân theo danh mục, theo tài khoản. Dùng cho mọi câu hỏi \"bao nhiêu\", \"tổng\", \"chi nhiều nhất vào đâu\", so sánh các kỳ (gọi một lần cho mỗi kỳ).",
-      "name" : "summarize_transactions",
-      "parameters" : {
-        "properties" : {
-          "accounts" : {
-            "description" : "Lọc theo tên tài khoản; bỏ trống là tất cả",
-            "items" : {
-              "type" : "string"
+      "description": "Tính tổng chi tiêu hoặc thu nhập trong một khoảng ngày, kèm số giao dịch và phân theo danh mục, theo tài khoản. Dùng cho mọi câu hỏi \"bao nhiêu\", \"tổng\", \"chi nhiều nhất vào đâu\", so sánh các kỳ (gọi một lần cho mỗi kỳ).",
+      "name": "summarize_transactions",
+      "parameters": {
+        "properties": {
+          "accounts": {
+            "description": "Lọc theo tên tài khoản; bỏ trống là tất cả",
+            "items": {
+              "type": "string"
             },
-            "type" : "array"
+            "type": "array"
           },
-          "categories" : {
-            "description" : "Lọc theo tên danh mục; bỏ trống là tất cả",
-            "items" : {
-              "type" : "string"
+          "categories": {
+            "description": "Lọc theo tên danh mục; bỏ trống là tất cả",
+            "items": {
+              "type": "string"
             },
-            "type" : "array"
+            "type": "array"
           },
-          "from" : {
-            "description" : "Ngày đầu, YYYY-MM-DD",
-            "type" : "string"
+          "from": {
+            "description": "Ngày đầu, YYYY-MM-DD",
+            "type": "string"
           },
-          "kind" : {
-            "description" : "expense: chi, income: thu",
-            "enum" : [
+          "kind": {
+            "description": "expense: chi, income: thu",
+            "enum": [
               "expense",
               "income"
             ],
-            "type" : "string"
+            "type": "string"
           },
-          "to" : {
-            "description" : "Ngày cuối (tính cả ngày này), YYYY-MM-DD",
-            "type" : "string"
+          "to": {
+            "description": "Ngày cuối (tính cả ngày này), YYYY-MM-DD",
+            "type": "string"
           }
         },
-        "required" : [
+        "required": [
           "from",
           "to",
           "kind"
         ],
-        "type" : "object"
+        "type": "object"
       }
     },
     {
-      "description" : "Liệt kê các giao dịch trong một khoảng ngày (mới nhất hoặc lớn nhất trước), lọc theo loại, danh mục, tài khoản hoặc chữ trong ghi chú. Dùng cho \"khoản lớn nhất\", \"đã chi gì\", và để tìm giao dịch trước khi xoá (mỗi giao dịch có ref).",
-      "name" : "list_transactions",
-      "parameters" : {
-        "properties" : {
-          "accounts" : {
-            "items" : {
-              "type" : "string"
+      "description": "Liệt kê các giao dịch trong một khoảng ngày (mới nhất hoặc lớn nhất trước), lọc theo loại, danh mục, tài khoản hoặc chữ trong ghi chú. Dùng cho \"khoản lớn nhất\", \"đã chi gì\", và để tìm giao dịch trước khi xoá (mỗi giao dịch có ref).",
+      "name": "list_transactions",
+      "parameters": {
+        "properties": {
+          "accounts": {
+            "items": {
+              "type": "string"
             },
-            "type" : "array"
+            "type": "array"
           },
-          "categories" : {
-            "items" : {
-              "type" : "string"
+          "categories": {
+            "items": {
+              "type": "string"
             },
-            "type" : "array"
+            "type": "array"
           },
-          "from" : {
-            "description" : "Ngày đầu, YYYY-MM-DD",
-            "type" : "string"
+          "from": {
+            "description": "Ngày đầu, YYYY-MM-DD",
+            "type": "string"
           },
-          "kind" : {
-            "description" : "Bỏ trống là cả hai",
-            "enum" : [
+          "kind": {
+            "description": "Bỏ trống là cả hai",
+            "enum": [
               "expense",
               "income"
             ],
-            "type" : "string"
+            "type": "string"
           },
-          "limit" : {
-            "description" : "Tối đa 20, mặc định 10",
-            "type" : "integer"
+          "limit": {
+            "description": "Tối đa 20, mặc định 10",
+            "type": "integer"
           },
-          "search" : {
-            "description" : "Chữ có trong ghi chú hoặc tên danh mục, ví dụ: tiền điện",
-            "type" : "string"
+          "search": {
+            "description": "Chữ có trong ghi chú hoặc tên danh mục, ví dụ: tiền điện",
+            "type": "string"
           },
-          "sort" : {
-            "enum" : [
+          "sort": {
+            "enum": [
               "newest",
               "largest"
             ],
-            "type" : "string"
+            "type": "string"
           },
-          "to" : {
-            "description" : "Ngày cuối (tính cả ngày này), YYYY-MM-DD",
-            "type" : "string"
+          "to": {
+            "description": "Ngày cuối (tính cả ngày này), YYYY-MM-DD",
+            "type": "string"
           }
         },
-        "required" : [
+        "required": [
           "from",
           "to"
         ],
-        "type" : "object"
+        "type": "object"
       }
     },
     {
-      "description" : "Số dư từng tài khoản (tiền mặt, ngân hàng, ví, thẻ tín dụng), tổng tiền đang có, tiền trong các hũ, tổng tài sản ròng, dư nợ thẻ, tiền cho vay và đi vay còn lại.",
-      "name" : "get_accounts",
-      "parameters" : {
-        "properties" : {
-
-        },
-        "type" : "object"
+      "description": "Số dư từng tài khoản (tiền mặt, ngân hàng, ví, thẻ tín dụng), tổng tiền đang có, tiền trong các hũ, tổng tài sản ròng, dư nợ thẻ, tiền cho vay và đi vay còn lại.",
+      "name": "get_accounts",
+      "parameters": {
+        "properties": {},
+        "type": "object"
       }
     },
     {
-      "description" : "Nợ nần: các khoản cho vay (người khác nợ mình) và đi vay (mình nợ người khác), còn lại bao nhiêu, đã trả bao nhiêu, vay từ ngày nào, hạn trả, lãi mỗi tháng, của ai; kèm dư nợ thẻ tín dụng. Mặc định chỉ các khoản chưa trả xong.",
-      "name" : "get_loans",
-      "parameters" : {
-        "properties" : {
-          "direction" : {
-            "description" : "lent: mình cho vay, borrowed: mình đi vay; bỏ trống là cả hai",
-            "enum" : [
+      "description": "Nợ nần: các khoản cho vay (người khác nợ mình) và đi vay (mình nợ người khác), còn lại bao nhiêu, đã trả bao nhiêu, vay từ ngày nào, hạn trả, lãi mỗi tháng, của ai; kèm dư nợ thẻ tín dụng. Mặc định chỉ các khoản chưa trả xong.",
+      "name": "get_loans",
+      "parameters": {
+        "properties": {
+          "direction": {
+            "description": "lent: mình cho vay, borrowed: mình đi vay; bỏ trống là cả hai",
+            "enum": [
               "lent",
               "borrowed"
             ],
-            "type" : "string"
+            "type": "string"
           },
-          "include_settled" : {
-            "description" : "true để kể cả các khoản đã trả xong",
-            "type" : "boolean"
+          "include_settled": {
+            "description": "true để kể cả các khoản đã trả xong",
+            "type": "boolean"
           }
         },
-        "type" : "object"
+        "type": "object"
       }
     },
     {
-      "description" : "Hạn mức chi tiêu: hạn mức cả tháng và từng nhóm hạng mục, đã chi bao nhiêu, còn tiêu được bao nhiêu, mỗi ngày còn được tiêu bao nhiêu đến hết tháng, nhóm nào sắp chạm hay đã vượt. Dùng cho \"còn tiêu được bao nhiêu\", \"có vượt hạn mức không\", \"hạn mức ăn uống còn bao nhiêu\". Trung bình mỗi ngày đã tiêu thì dùng summarize_transactions.",
-      "name" : "get_budget",
-      "parameters" : {
-        "properties" : {
-          "month" : {
-            "description" : "Tháng, YYYY-MM; bỏ trống là tháng này",
-            "type" : "string"
+      "description": "Hạn mức chi tiêu: hạn mức cả tháng và từng nhóm hạng mục, đã chi bao nhiêu, còn tiêu được bao nhiêu, mỗi ngày còn được tiêu bao nhiêu đến hết tháng, nhóm nào sắp chạm hay đã vượt. Dùng cho \"còn tiêu được bao nhiêu\", \"có vượt hạn mức không\", \"hạn mức ăn uống còn bao nhiêu\". Trung bình mỗi ngày đã tiêu thì dùng summarize_transactions.",
+      "name": "get_budget",
+      "parameters": {
+        "properties": {
+          "month": {
+            "description": "Tháng, YYYY-MM; bỏ trống là tháng này",
+            "type": "string"
           }
         },
-        "type" : "object"
+        "type": "object"
       }
     },
     {
-      "description" : "Các hũ tiết kiệm: tên, đã để dành bao nhiêu, mục tiêu, còn thiếu bao nhiêu, đạt bao nhiêu phần trăm, hạn, mỗi tháng cần để thêm bao nhiêu cho kịp hạn, tháng này đã nạp, rút bao nhiêu. Dùng cho câu hỏi về hũ, quỹ, tiết kiệm cho mục tiêu. Nạp, rút hũ của tháng khác thì dùng list_transfers.",
-      "name" : "get_savings_goals",
-      "parameters" : {
-        "properties" : {
-          "include_completed" : {
-            "description" : "true để kể cả các hũ đã hoàn thành, đã đóng",
-            "type" : "boolean"
+      "description": "Các hũ tiết kiệm: tên, đã để dành bao nhiêu, mục tiêu, còn thiếu bao nhiêu, đạt bao nhiêu phần trăm, hạn, mỗi tháng cần để thêm bao nhiêu cho kịp hạn, tháng này đã nạp, rút bao nhiêu. Dùng cho câu hỏi về hũ, quỹ, tiết kiệm cho mục tiêu. Nạp, rút hũ của tháng khác thì dùng list_transfers.",
+      "name": "get_savings_goals",
+      "parameters": {
+        "properties": {
+          "include_completed": {
+            "description": "true để kể cả các hũ đã hoàn thành, đã đóng",
+            "type": "boolean"
           }
         },
-        "type" : "object"
+        "type": "object"
       }
     },
     {
-      "description" : "Các giao dịch định kỳ người dùng đã đặt (tiền nhà, điện nước, lương, gói đăng ký…): số tiền, lặp lại thế nào, lần tới ngày nào, tài khoản, đang chạy hay tạm dừng, và tổng chi, thu định kỳ quy ra mỗi tháng. Dùng cho \"mỗi tháng phải trả cố định bao nhiêu\", \"có những khoản định kỳ nào\".",
-      "name" : "get_recurring",
-      "parameters" : {
-        "properties" : {
-          "kind" : {
-            "description" : "Bỏ trống là cả hai",
-            "enum" : [
+      "description": "Các giao dịch định kỳ người dùng đã đặt (tiền nhà, điện nước, lương, gói đăng ký…): số tiền, lặp lại thế nào, lần tới ngày nào, tài khoản, đang chạy hay tạm dừng, và tổng chi, thu định kỳ quy ra mỗi tháng. Dùng cho \"mỗi tháng phải trả cố định bao nhiêu\", \"có những khoản định kỳ nào\".",
+      "name": "get_recurring",
+      "parameters": {
+        "properties": {
+          "kind": {
+            "description": "Bỏ trống là cả hai",
+            "enum": [
               "expense",
               "income"
             ],
-            "type" : "string"
+            "type": "string"
           }
         },
-        "type" : "object"
+        "type": "object"
       }
     },
     {
-      "description" : "Những khoản sắp đến hạn hoặc đã quá hạn: ngày giao dịch định kỳ tới (hoá đơn, tiền nhà, lương), hạn trả hay hạn thu các khoản vay, hạn các hũ tiết kiệm. Dùng cho \"sắp tới phải trả gì\", \"tuần này có khoản nào\", \"có gì quá hạn không\".",
-      "name" : "get_upcoming",
-      "parameters" : {
-        "properties" : {
-          "days" : {
-            "description" : "Số ngày tới, mặc định 14, tối đa 90",
-            "type" : "integer"
+      "description": "Những khoản sắp đến hạn hoặc đã quá hạn: ngày giao dịch định kỳ tới (hoá đơn, tiền nhà, lương), hạn trả hay hạn thu các khoản vay, hạn các hũ tiết kiệm. Dùng cho \"sắp tới phải trả gì\", \"tuần này có khoản nào\", \"có gì quá hạn không\".",
+      "name": "get_upcoming",
+      "parameters": {
+        "properties": {
+          "days": {
+            "description": "Số ngày tới, mặc định 14, tối đa 90",
+            "type": "integer"
           }
         },
-        "type" : "object"
+        "type": "object"
       }
     },
     {
-      "description" : "Thu, chi, để dành được (thu trừ chi), tỉ lệ để dành và tài sản ròng cuối tháng của từng tháng gần đây, kèm trung bình mỗi tháng và tháng chi nhiều nhất, ít nhất. Dùng cho so sánh nhiều tháng, xu hướng, \"trung bình mỗi tháng tiêu bao nhiêu\", \"tài sản tăng hay giảm\", \"tháng nào tiêu nhiều nhất\".",
-      "name" : "get_monthly_trend",
-      "parameters" : {
-        "properties" : {
-          "months" : {
-            "description" : "Số tháng gần nhất, tính cả tháng này; mặc định 6, tối đa 24",
-            "type" : "integer"
+      "description": "Thu, chi, để dành được (thu trừ chi), tỉ lệ để dành và tài sản ròng cuối tháng của từng tháng gần đây, kèm trung bình mỗi tháng và tháng chi nhiều nhất, ít nhất. Dùng cho so sánh nhiều tháng, xu hướng, \"trung bình mỗi tháng tiêu bao nhiêu\", \"tài sản tăng hay giảm\", \"tháng nào tiêu nhiều nhất\".",
+      "name": "get_monthly_trend",
+      "parameters": {
+        "properties": {
+          "months": {
+            "description": "Số tháng gần nhất, tính cả tháng này; mặc định 6, tối đa 24",
+            "type": "integer"
           }
         },
-        "type" : "object"
+        "type": "object"
       }
     },
     {
-      "description" : "Các lần chuyển tiền giữa các tài khoản của chính người dùng (kèm phí chuyển) và nạp, rút tiền ở hũ tiết kiệm, trong một khoảng ngày. Đây không phải chi tiêu. Dùng cho \"chuyển bao nhiêu từ Vietcombank sang MoMo\", \"tháng này bỏ vào hũ bao nhiêu\", \"phí chuyển khoản hết bao nhiêu\".",
-      "name" : "list_transfers",
-      "parameters" : {
-        "properties" : {
-          "account" : {
-            "description" : "Tên tài khoản hoặc hũ; bỏ trống là tất cả",
-            "type" : "string"
+      "description": "Các lần chuyển tiền giữa các tài khoản của chính người dùng (kèm phí chuyển) và nạp, rút tiền ở hũ tiết kiệm, trong một khoảng ngày. Đây không phải chi tiêu. Dùng cho \"chuyển bao nhiêu từ Vietcombank sang MoMo\", \"tháng này bỏ vào hũ bao nhiêu\", \"phí chuyển khoản hết bao nhiêu\".",
+      "name": "list_transfers",
+      "parameters": {
+        "properties": {
+          "account": {
+            "description": "Tên tài khoản hoặc hũ; bỏ trống là tất cả",
+            "type": "string"
           },
-          "from" : {
-            "description" : "Ngày đầu, YYYY-MM-DD",
-            "type" : "string"
+          "from": {
+            "description": "Ngày đầu, YYYY-MM-DD",
+            "type": "string"
           },
-          "limit" : {
-            "description" : "Tối đa 20, mặc định 10",
-            "type" : "integer"
+          "limit": {
+            "description": "Tối đa 20, mặc định 10",
+            "type": "integer"
           },
-          "to" : {
-            "description" : "Ngày cuối (tính cả ngày này), YYYY-MM-DD",
-            "type" : "string"
+          "to": {
+            "description": "Ngày cuối (tính cả ngày này), YYYY-MM-DD",
+            "type": "string"
           },
-          "type" : {
-            "description" : "account: giữa tài khoản; goal: nạp, rút hũ; bỏ trống là cả hai",
-            "enum" : [
+          "type": {
+            "description": "account: giữa tài khoản; goal: nạp, rút hũ; bỏ trống là cả hai",
+            "enum": [
               "account",
               "goal"
             ],
-            "type" : "string"
+            "type": "string"
           }
         },
-        "required" : [
+        "required": [
           "from",
           "to"
         ],
-        "type" : "object"
+        "type": "object"
       }
     },
     {
-      "description" : "Ghi một giao dịch chi hoặc thu mới vào app. Gọi ngay khi người dùng muốn ghi, thêm một khoản (\"ghi ăn trưa 60k\", \"nhận lương 25 triệu\"); app hiện thẻ để họ xem, sửa hoặc xoá.",
-      "name" : "record_transaction",
-      "parameters" : {
-        "properties" : {
-          "account" : {
-            "description" : "Tên tài khoản; bỏ trống là tài khoản chính",
-            "type" : "string"
+      "description": "Soạn thẻ ghi khoản chi hoặc thu để người dùng kiểm tra rồi bấm Lưu; công cụ này CHƯA ghi gì. Gọi ngay khi người dùng muốn ghi, thêm một khoản (\"ghi ăn trưa 60k\", \"nhận lương 25 triệu\"), kể cả khi còn thiếu thông tin, và gửi mọi khoản của câu trong một lần. Kết quả: needsInfo thì hỏi lại đúng câu `ask` (kèm gợi ý), rồi gọi lại với đủ các khoản; rejected thì nói `reason` và `howTo`; draft thì nói ngắn là người dùng kiểm tra thẻ rồi bấm Lưu, không bao giờ nói đã ghi. Sửa thẻ đang chờ thì gửi lại đủ các khoản của thẻ kèm `replaces`.",
+      "name": "record_transaction",
+      "parameters": {
+        "properties": {
+          "replaces": {
+            "description": "Mã thẻ đang chờ Lưu cần sửa, ví dụ k7f2 (từ [Thẻ #k7f2])",
+            "type": "string"
           },
-          "amount" : {
-            "description" : "Số tiền VND, số nguyên dương",
-            "type" : "integer"
-          },
-          "category" : {
-            "description" : "Tên danh mục trong danh sách; bỏ trống để app tự chọn",
-            "type" : "string"
-          },
-          "date" : {
-            "description" : "YYYY-MM-DD; bỏ trống là hôm nay",
-            "type" : "string"
-          },
-          "kind" : {
-            "enum" : [
-              "expense",
-              "income"
-            ],
-            "type" : "string"
-          },
-          "note" : {
-            "description" : "Ghi chú ngắn: đã chi hay nhận gì, ví dụ: Ăn trưa",
-            "type" : "string"
+          "transactions": {
+            "description": "Từng khoản người dùng muốn ghi",
+            "items": {
+              "properties": {
+                "account": {
+                  "description": "Tên tài khoản người dùng nói; bỏ trống nếu họ không nói",
+                  "type": "string"
+                },
+                "amount": {
+                  "description": "Số tiền VND, số nguyên dương; bỏ trống nếu người dùng chưa nói",
+                  "type": "integer"
+                },
+                "amount_said": {
+                  "description": "Số tiền đúng như người dùng nói, ví dụ: 1tr2, 60k, 2 củ",
+                  "type": "string"
+                },
+                "category": {
+                  "description": "Tên hạng mục con trong danh sách; bỏ trống nếu không chắc",
+                  "type": "string"
+                },
+                "date": {
+                  "description": "YYYY-MM-DD; bỏ trống là hôm nay",
+                  "type": "string"
+                },
+                "kind": {
+                  "description": "expense: chi; income: thu; transfer: chuyển tiền giữa hai tài khoản của mình (rút tiền, nạp ví, trả thẻ tín dụng); loan: cho vay, đi vay, trả nợ, thu nợ; goal: bỏ tiền vào hay rút từ hũ tiết kiệm; unclear: chưa rõ",
+                  "enum": [
+                    "expense",
+                    "income",
+                    "transfer",
+                    "loan",
+                    "goal",
+                    "unclear"
+                  ],
+                  "type": "string"
+                },
+                "new_category": {
+                  "description": "Chỉ khi không hạng mục nào hợp: tên mục mới và nhóm có sẵn để đặt nó vào",
+                  "properties": {
+                    "group": {
+                      "description": "Tên nhóm có sẵn, ví dụ: Học tập",
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "note": {
+                  "description": "Ghi chú ngắn: đã chi hay nhận gì, ví dụ: Bún chả",
+                  "type": "string"
+                },
+                "time": {
+                  "description": "HH:mm nếu người dùng nói giờ",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
           }
         },
-        "required" : [
-          "kind",
-          "amount"
+        "required": [
+          "transactions"
         ],
-        "type" : "object"
+        "type": "object"
       }
     },
     {
-      "description" : "Đề nghị xoá một giao dịch theo ref (lấy từ list_transactions). Có ref rồi thì gọi ngay, không hỏi lại người dùng: app không xoá liền mà hiện thẻ để họ bấm xác nhận.",
-      "name" : "delete_transaction",
-      "parameters" : {
-        "properties" : {
-          "ref" : {
-            "description" : "ref của giao dịch, từ list_transactions",
-            "type" : "string"
+      "description": "Đề nghị xoá một giao dịch theo ref (lấy từ list_transactions). Có ref rồi thì gọi ngay, không hỏi lại người dùng: app không xoá liền mà hiện thẻ để họ bấm xác nhận.",
+      "name": "delete_transaction",
+      "parameters": {
+        "properties": {
+          "ref": {
+            "description": "ref của giao dịch, từ list_transactions",
+            "type": "string"
           }
         },
-        "required" : [
+        "required": [
           "ref"
         ],
-        "type" : "object"
+        "type": "object"
       }
     },
     {
-      "description" : "Thông tin về chính app Milu. BẮT BUỘC gọi cho mọi câu hỏi về app, không tự trả lời theo trí nhớ: lượt hỏi AI (còn bao nhiêu, khi nào có lại, cách tính, hỏi Milu có tốn phí không), Milu Pro (giá, quyền lợi, mua, huỷ), quyền riêng tư (dữ liệu gửi đi đâu, AI có lưu hay đọc dữ liệu không), dữ liệu và iCloud (lưu ở đâu, sao lưu, đổi máy, xoá dữ liệu), khoá Face ID, điều khoản sử dụng, tính năng nằm ở đâu, liên hệ hỗ trợ, phiên bản.",
-      "name" : "get_app_info",
-      "parameters" : {
-        "properties" : {
-          "topic" : {
-            "description" : "ai_quota: lượt hỏi AI, hỏi Milu có mất phí không; pro: gói Milu Pro; privacy: chính sách quyền riêng tư, dữ liệu gửi lên máy chủ, AI; data: dữ liệu lưu ở đâu, iCloud, sao lưu, đổi máy, xoá dữ liệu; security: khoá Face ID, quyền micro; terms: điều khoản sử dụng; features: tính năng và chỗ tìm trong app; support: liên hệ, góp ý, phiên bản",
-            "enum" : [
+      "description": "Thông tin về chính app Milu. BẮT BUỘC gọi cho mọi câu hỏi về app, không tự trả lời theo trí nhớ: lượt hỏi AI (còn bao nhiêu, khi nào có lại, cách tính, hỏi Milu có tốn phí không), Milu Pro (giá, quyền lợi, mua, huỷ), quyền riêng tư (dữ liệu gửi đi đâu, AI có lưu hay đọc dữ liệu không), dữ liệu và iCloud (lưu ở đâu, sao lưu, đổi máy, xoá dữ liệu), khoá Face ID, điều khoản sử dụng, tính năng nằm ở đâu, liên hệ hỗ trợ, phiên bản.",
+      "name": "get_app_info",
+      "parameters": {
+        "properties": {
+          "topic": {
+            "description": "ai_quota: lượt hỏi AI, hỏi Milu có mất phí không; pro: gói Milu Pro; privacy: chính sách quyền riêng tư, dữ liệu gửi lên máy chủ, AI; data: dữ liệu lưu ở đâu, iCloud, sao lưu, đổi máy, xoá dữ liệu; security: khoá Face ID, quyền micro; terms: điều khoản sử dụng; features: tính năng và chỗ tìm trong app; support: liên hệ, góp ý, phiên bản",
+            "enum": [
               "ai_quota",
               "pro",
               "privacy",
@@ -510,13 +592,13 @@
               "features",
               "support"
             ],
-            "type" : "string"
+            "type": "string"
           }
         },
-        "required" : [
+        "required": [
           "topic"
         ],
-        "type" : "object"
+        "type": "object"
       }
     }
   ]

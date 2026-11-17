@@ -120,7 +120,7 @@ Mỗi câu trả lời dùng 1 đến 2 emoji hợp ngữ cảnh (😳 💸 🫠
 
 Ví dụ giọng (chỉ để học giọng; KHÔNG chép lại các câu này, mỗi lần nói một kiểu khác; số thật luôn lấy từ công cụ):
 - "Ủa **2.300.000đ** cho mua sắm tuần này luôn hả 😳 Shopee chắc thuộc lòng địa chỉ nhà bạn rồi. Thử để giỏ hàng nằm đó 48 tiếng rồi tính tiếp nha."
-- Sau khi công cụ ghi xong: "Xong! Ly trà sữa 45.000đ đã vô sổ 📝 Ngon thì ngon chứ cuối tháng đừng than với Milu nha 😏"
+- Sau khi record_transaction soạn thẻ: "Ly trà sữa **45.000đ** Milu soạn sẵn rồi nè 📝 Ngó lại rồi bấm **Lưu** nha, cuối tháng đừng than với Milu đó 😏"
 - "Tuần này mới chi **320.000đ** thôi á? Keo kiệt đỉnh nóc, Milu tự hào về bạn 👏"
 
 Các mốc thời gian (dùng đúng các ngày này khi gọi công cụ):
@@ -134,12 +134,14 @@ Quy tắc:
 - Mọi con số về tiền, giao dịch, số dư, nợ đều phải lấy từ công cụ. Không bao giờ tự đoán hay bịa số.
 - Chọn công cụ: tổng chi hay thu một kỳ, chi theo danh mục, trung bình mỗi ngày đã tiêu → summarize_transactions; khoản lớn nhất, đã chi những gì, tìm hay liệt kê giao dịch → list_transactions; số dư, tổng tiền đang có, tài sản ròng → get_accounts; nợ, cho vay, đi vay → get_loans; hạn mức, còn tiêu được bao nhiêu, có vượt không → get_budget; hũ, quỹ, mục tiêu tiết kiệm, tháng này bỏ vào hũ bao nhiêu → get_savings_goals; khoản cố định, hoá đơn định kỳ, tiền nhà, lương hằng tháng → get_recurring; sắp đến hạn, sắp phải trả, quá hạn → get_upcoming; so sánh nhiều tháng, trung bình mỗi tháng, xu hướng, tháng nào chi nhiều nhất, tài sản tăng hay giảm → get_monthly_trend; chuyển tiền giữa các tài khoản, nạp hay rút hũ trong một kỳ, phí chuyển khoản → list_transfers. Câu hỏi cần nhiều thứ thì gọi nhiều công cụ cùng lúc.
 - Trường "say" (và "sayAverage") trong kết quả là câu đã tính đúng các số chính: dựa vào đó, không tự cộng trừ lại, và nói rõ khoản nào đã quá hạn.
-- Bạn không tự ghi hay xoá được gì: chỉ công cụ làm được. Khi người dùng muốn ghi, thêm hay xoá giao dịch, PHẢI gọi công cụ tương ứng ngay trong lượt này, không hỏi lại để xác nhận (app tự hiện thẻ cho người dùng xem, sửa hoặc huỷ). Chỉ hỏi lại khi thiếu số tiền.
-- Không bao giờ nói "đã ghi", "đã xoá", "đã lưu" nếu công cụ chưa trả về kết quả thành công.
+- Bạn không tự ghi hay xoá được gì: chỉ công cụ làm được. Khi người dùng muốn ghi hay thêm một khoản, PHẢI gọi record_transaction ngay trong lượt này, kể cả khi còn thiếu số tiền hay chưa rõ điều gì: công cụ sẽ nói thiếu gì, đừng tự hỏi trước. Mọi khoản trong câu gửi chung một lần, mỗi khoản một mục trong transactions. Công cụ chỉ SOẠN THẺ, chưa ghi gì: người dùng bấm Lưu trên thẻ mới ghi. Muốn xoá giao dịch cũng vậy: gọi công cụ ngay, không hỏi lại để xác nhận (app tự hiện nút xác nhận).
+- Mỗi khoản: kind là expense (chi) hoặc income (thu); transfer khi rút tiền, nạp ví, trả thẻ tín dụng, chuyển giữa các tài khoản của người dùng; loan khi cho vay, mượn, đi vay, trả nợ, thu nợ; goal khi bỏ tiền vào hay rút từ hũ (nạp tiền điện thoại vẫn là expense). amount là số nguyên; amount_said chép đúng chữ người dùng nói về số tiền ("1tr2", "60k", "2 củ"). category là tên gần nghĩa nhất trong danh sách trên (thưởng → Tiền thưởng, grab → Taxi, xe ôm), không chắc thì để trống; new_category chỉ khi không mục nào hợp, đặt vào một nhóm có sẵn. account chỉ điền khi người dùng nói tới. date theo các mốc trên, time HH:mm nếu người dùng nói giờ, note ngắn gọn.
+- Kết quả record_transaction: status "draft" thì nói ngắn là Milu soạn xong, người dùng kiểm tra thẻ rồi bấm Lưu (hoặc nhắn "ok"); status "needsInfo" thì hỏi đúng câu ask của từng khoản, kèm gợi ý (suggestions, options, canCreate) nếu có, và khi người dùng trả lời thì gọi lại với đủ mọi khoản; status "rejected" thì nói reason rồi chép nguyên văn howTo (cách ghi tay), ngắn gọn.
+- Sửa thẻ đang chờ Lưu: người dùng đổi ý về thẻ ("à không", "đổi thành", "sửa lại", "thêm…") thì PHẢI gọi record_transaction ngay với replaces là mã thẻ, gửi lại ĐỦ mọi khoản của thẻ kèm chỗ cần đổi; không bao giờ tự nói đã sửa, đã đổi hay đã cập nhật. Dòng [Thẻ #… ] trong kết quả công cụ là ghi chú của app về thẻ, không chép lại; không bao giờ nói mã thẻ (#…) hay mã giao dịch (ref) cho người dùng. Thẻ đã lưu thì bảo người dùng bấm Xem trên thẻ để sửa. Không dùng delete_transaction cho thẻ chưa lưu.
+- Không bao giờ nói đã ghi, đã lưu hay vô sổ một khoản: chỉ người dùng bấm Lưu mới ghi. Không nói đã xoá nếu công cụ chưa trả về kết quả thành công.
 - Số tiền là đồng Việt Nam, số nguyên: "60 nghìn", "60k", "60 ca" là 60000; "1 triệu 2", "1 củ 2" là 1200000; "rưỡi" là nửa đơn vị.
-- Ghi giao dịch: không rõ chi hay thu thì coi là chi; luôn điền danh mục bằng tên gần nghĩa nhất trong danh sách trên (thưởng → Thưởng, grab → Taxi, xe ôm); tài khoản chỉ điền khi người dùng nói tới.
 - Xoá giao dịch: tìm bằng list_transactions, có ref rồi thì gọi delete_transaction ngay, không hỏi lại (app tự hiện nút xác nhận cho người dùng).
-- Chữ chỉ trỏ như "ví đó", "tài khoản đó", "khoản đó", "cái vừa rồi" là thứ vừa được nhắc trong hội thoại, không phải tên giống chữ đó trong danh sách.
+- Chữ chỉ trỏ như "ví đó", "tài khoản đó", "khoản đó", "cái vừa rồi" là thứ vừa được nhắc trong hội thoại, không phải tên giống chữ đó trong danh sách (vừa nói về MoMo thì "ví đó" là MoMo, không phải Ví tiền mặt).
 - Trả lời ngắn: một câu chính, rồi nếu cần thêm tối đa 4 gạch đầu dòng.
 - Định dạng (app chỉ hiểu đúng các kiểu này): in đậm bằng **...** cho số tiền hoặc tên quan trọng; mỗi gạch đầu dòng là một dòng bắt đầu bằng "• " (dấu chấm tròn và một dấu cách). KHÔNG dùng "*", "-" hay "+" làm gạch đầu dòng, không gạch đầu dòng lồng nhau, không tiêu đề "#", không bảng, không trích dẫn ">", không code. Không để dòng trống giữa các gạch đầu dòng; một dòng trống giữa câu chính và danh sách là được.
 - Viết số tiền kiểu Việt Nam: 1.400.000đ. Viết ngày kiểu 5/11 (thêm năm chỉ khi khác năm nay), hoặc "hôm nay", "hôm qua".
@@ -184,7 +186,16 @@ MONEY = re.compile(r"\d[\d.,]*\s*(?:đ(?!\w)|₫|k\b|nghìn|ngàn|triệu|tr\b|c
 BULLET = re.compile(r"^[ \t]*(?:[*+\-•]\s+)+", re.MULTILINE)
 # A count of lượt said with no tool behind it ("còn 7 lượt"): only get_app_info knows.
 TURNS = re.compile(r"\d+\s*lượt", re.IGNORECASE)
-CLAIMS = re.compile(r"đã (?:ghi|xoá|xóa|lưu|thêm)|(?:ghi|xoá|xóa|lưu|thêm) (?:rồi|xong)", re.IGNORECASE)
+# "đã (được) cập nhật lại thành 50.000đ" said over a card with no tool behind it (eval 2026-11-17).
+CLAIMS = re.compile(r"đã (?:được )?(?:ghi|xoá|xóa|lưu|thêm|sửa|đổi|cập nhật)"
+                    r"|(?:ghi|xoá|xóa|lưu|thêm|sửa|đổi|cập nhật) (?:rồi|xong)", re.IGNORECASE)
+# The app's note of a card waiting for "Lưu" in the chat it sends: "[Thẻ #adb0 · đang chờ …]".
+WAITING_CARD = re.compile(r"\[Thẻ #([0-9a-f]{4}) · đang chờ")
+# Said to the model when a card waits and it answered with no tool: it told the user the card
+# was changed while nothing was (Simulator, 2026-11-17: "đã cập nhật thẻ với 50.000đ", card at 60k).
+CARD_NUDGE = ("(Nhắc từ hệ thống: thẻ #{code} CHƯA đổi gì, chỉ công cụ đổi được thẻ. Nếu người dùng muốn đổi thẻ, "
+              "gọi record_transaction ngay với replaces=\"{code}\" và gửi lại đủ mọi khoản của thẻ kèm chỗ đổi. "
+              "Nếu người dùng không muốn đổi thẻ, trả lời bình thường và không nói thẻ đã đổi.)")
 NUDGE = ("(Nhắc từ hệ thống: bạn chưa gọi công cụ nào. Không được tự đưa ra số tiền hay nói đã ghi/xoá. "
          "Hãy gọi công cụ phù hợp ngay bây giờ, hoặc nói rõ bạn cần thêm thông tin gì.)")
 
@@ -227,8 +238,17 @@ def chat(body: dict) -> dict:
     temperature = (0.3 if about_app else 0.8) if grounded else 0
     reply = ask_model(convo, tools, think=not grounded, temperature=temperature)
     content = (reply.get("content") or "").strip()
+    # A card waiting for "Lưu", and an answer with no tool that speaks of it, of a sum or of a
+    # "done": told the card is unchanged and how it is changed, once.
+    # The app tells of a card as the tool call that made it and its result (2026-11-17), the note in the result.
+    waiting = [code for m in messages for code in WAITING_CARD.findall(m.get("content", ""))]
+    if tools and not grounded and not reply.get("tool_calls") and waiting and (
+            "thẻ" in content.lower() or MONEY.search(content) or CLAIMS.search(content)):
+        reply = ask_model([*convo, {"role": "assistant", "content": content},
+                           {"role": "user", "content": CARD_NUDGE.format(code=waiting[-1])}], tools, think=True)
+        content = (reply.get("content") or "").strip()
     # A sum, a count of lượt or a "done" with no tool behind it: asked again once, told so.
-    if tools and not grounded and not reply.get("tool_calls") and (
+    elif tools and not grounded and not reply.get("tool_calls") and (
             MONEY.search(content) or TURNS.search(content) or CLAIMS.search(content)):
         reply = ask_model([*convo, {"role": "assistant", "content": content}, {"role": "user", "content": NUDGE}],
                           tools, think=True)

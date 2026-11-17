@@ -70,6 +70,22 @@ def matches(expected, actual) -> bool:
     return key(actual) == key(expected)
 
 
+def record_items(arguments: dict) -> list[dict]:
+    """The items of a record_transaction call (2026-11-17: `transactions`, a list); one item at
+    the top, as the tool once took it, or the list written as a JSON string, read the same."""
+    items = arguments.get("transactions")
+    if isinstance(items, str):
+        try:
+            items = json.loads(items)
+        except json.JSONDecodeError:
+            items = None
+    if isinstance(items, dict):
+        items = [items]
+    if isinstance(items, list):
+        return [item for item in items if isinstance(item, dict)]
+    return [arguments] if any(name in arguments for name in ("amount", "kind", "category", "note")) else []
+
+
 def check_tool_case(case: dict, reply: dict) -> list[str]:
     expect = case["expect"]
     calls = reply.get("toolCalls") or []
@@ -84,9 +100,19 @@ def check_tool_case(case: dict, reply: dict) -> list[str]:
         return [f"gọi {call['name']} (cần {want_tool})"]
     problems = []
     arguments = call.get("arguments") or {}
+    # A record's own fields are its first item's; "replaces" and the count are the call's.
+    items = record_items(arguments) if call["name"] == "record_transaction" else []
+    fields = items[0] if items else arguments
     for name, wanted in (expect.get("args") or {}).items():
-        if not matches(wanted, arguments.get(name)):
-            problems.append(f"{name}={arguments.get(name)!r} (cần {wanted})")
+        actual = arguments.get(name) if name == "replaces" or call["name"] != "record_transaction" else fields.get(name)
+        if not matches(wanted, actual):
+            problems.append(f"{name}={actual!r} (cần {wanted})")
+    if "count" in expect and len(items) != expect["count"]:
+        problems.append(f"{len(items)} khoản (cần {expect['count']})")
+    if "amounts" in expect:
+        said = sorted(float(item.get("amount") or 0) for item in items)
+        if said != sorted(float(a) for a in expect["amounts"]):
+            problems.append(f"số tiền {said} (cần {sorted(expect['amounts'])})")
     return problems
 
 
@@ -139,6 +165,9 @@ def messages_for(case: dict, app: dict) -> list[dict]:
         # The app's own answer to get_app_info, as exported with the tools (app.json "appInfo").
         if isinstance(result, dict) and "$appInfo" in result:
             result = app["appInfo"][result["$appInfo"]]
+        # The app's own record_transaction answer: draft, needsInfo or rejected (app.json "record").
+        if isinstance(result, dict) and "$record" in result:
+            result = app["record"][result["$record"]]
         return [
             {"role": "user", "content": case["q"]},
             {"role": "assistant", "content": "", "toolCalls": [{"id": "c1", **case["toolCall"]}]},
@@ -168,7 +197,8 @@ def main() -> None:
         for _ in range(args.runs):
             try:
                 reply, ms = call(url, api_key, body)
-            except (urllib.error.URLError, TimeoutError) as error:
+            # A connection dropped on the way (the tunnel reset it, 2026-11-17) is one run lost, not the whole eval.
+            except (urllib.error.URLError, TimeoutError, OSError) as error:
                 problems.append(f"lỗi gọi API: {error}")
                 continue
             times.append(ms)
