@@ -49,6 +49,8 @@ def call(url: str, api_key: str, body: dict) -> tuple[dict, int]:
 
 def matches(expected, actual) -> bool:
     if isinstance(expected, dict):
+        if "not" in expected:
+            return not matches(expected["not"], actual)
         if "any" in expected:
             return any(matches(option, actual) for option in expected["any"])
         if "names" in expected:
@@ -109,6 +111,9 @@ def check_tool_case(case: dict, reply: dict) -> list[str]:
             problems.append(f"{name}={actual!r} (cần {wanted})")
     if "count" in expect and len(items) != expect["count"]:
         problems.append(f"{len(items)} khoản (cần {expect['count']})")
+    # "countIn": one of these counts ([0, 3]: the card's code alone shows it again, or all its rows).
+    if "countIn" in expect and len(items) not in expect["countIn"]:
+        problems.append(f"{len(items)} khoản (cần một trong {expect['countIn']})")
     if "amounts" in expect:
         said = sorted(float(item.get("amount") or 0) for item in items)
         if said != sorted(float(a) for a in expect["amounts"]):
@@ -136,6 +141,12 @@ def check_answer_case(case: dict, reply: dict) -> tuple[list[str], list[str]]:
     for text in answer.get("not", []):
         if key(text) in lowered:
             problems.append(f"có {text!r}")
+    # The answer's first word: "Ủa" opened answer after answer (user report 2026-11-18); compared
+    # whole, as "ua" is in "mua" and "của".
+    first = re.split(r"[\s,.!?…]+", lowered, maxsplit=1)[0] if lowered else ""
+    for text in answer.get("notStart", []):
+        if first == key(text):
+            problems.append(f"mở đầu bằng {text!r}")
     if "noMoneyExcept" in answer:
         allowed = {re.sub(r"\D", "", a) for a in answer["noMoneyExcept"]}
         for found in MONEY.findall(content):
