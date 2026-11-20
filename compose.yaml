@@ -8,14 +8,9 @@
 # Nothing publishes a port. Start or update: `docker compose up -d --build`.
 # Settings in .env (owner-only); .env.example lists them.
 #
-# The GPU holds one copy of the model. While the Timi web (project "finance")
-# runs, its Ollama is used through compose.shared-llm.yaml, which COMPOSE_FILE
-# in .env adds. The day Timi stops, in .env:
-#   COMPOSE_FILE=compose.yaml
-#   COMPOSE_PROFILES=llm
-#   OLLAMA_URL=http://llm:11434
-# then `docker compose up -d`: the models already downloaded are in the
-# finance-ollama volume, which llm keeps using.
+# The GPU holds one copy of the model: llm, the only Ollama on this machine
+# since the Timi web (project "finance") was taken down on 2026-11-20. Its
+# downloaded models are in the ollama volume.
 name: milu-server
 
 services:
@@ -121,7 +116,7 @@ services:
     security_opt: ["no-new-privileges:true"]
 
 volumes:
-  # Downloaded models, shared with the Timi web's Ollama until it stops.
+  # Downloaded models (copied from the Timi web's finance-ollama on 2026-11-20).
   models:
     external: true
-    name: finance-ollama
+    name: ollama
